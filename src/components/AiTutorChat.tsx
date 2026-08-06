@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { ChatMessage, User } from '../types';
 import { askAiTutor } from '../lib/api';
 import { speakEnglishText } from '../lib/audio';
@@ -152,9 +153,9 @@ export const AiTutorChat: React.FC<AiTutorChatProps> = ({ user }) => {
                 ? 'bg-indigo-600 text-white rounded-tr-xs'
                 : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-tl-xs'
             }`}>
-              {/* Main message text optimized to text-base (15px-16px) */}
-              <div className="whitespace-pre-line leading-relaxed font-medium text-base">
-                {msg.text}
+              {/* Main message text rendered with Markdown (bold, italic, lists, code) */}
+              <div className="leading-relaxed font-medium text-base [&_p]:mb-1.5 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_em]:italic [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_code]:bg-black/10 dark:[&_code]:bg-white/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded-md [&_code]:text-sm">
+                <ReactMarkdown>{msg.text}</ReactMarkdown>
               </div>
 
               {msg.translation && (

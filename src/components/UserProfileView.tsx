@@ -10,7 +10,9 @@ import {
   Volume2, 
   ShieldCheck, 
   Sparkles,
-  Calendar
+  Calendar,
+  UserCheck,
+  LogOut
 } from 'lucide-react';
 
 interface UserProfileViewProps {
@@ -19,6 +21,7 @@ interface UserProfileViewProps {
   lessons: Lesson[];
   onSelectLesson: (lesson: Lesson) => void;
   onOpenAuthModal: () => void;
+  onLogout?: () => void;
 }
 
 export const UserProfileView: React.FC<UserProfileViewProps> = ({
@@ -27,6 +30,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
   lessons,
   onSelectLesson,
   onOpenAuthModal,
+  onLogout,
 }) => {
   const completedLessonsList = lessons.filter((l) => progress.completedLessonIds.includes(l.id));
 
@@ -44,9 +48,11 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
           <div className="space-y-1">
             <div className="flex items-center justify-center sm:justify-start gap-2">
               <h1 className="text-xl font-extrabold text-slate-900 dark:text-slate-100">{user.name}</h1>
-              <span className="px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 rounded-md text-xs font-bold uppercase">
-                Cấp độ {user.level}
-              </span>
+              {!user.isGuest && (
+                <span className="px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 rounded-md text-xs font-bold uppercase">
+                  Cấp độ {user.level}
+                </span>
+              )}
               {user.role === 'admin' && (
                 <span className="px-2 py-0.5 bg-purple-100 dark:bg-purple-950/80 text-purple-800 dark:text-purple-300 rounded-md text-[11px] font-bold">
                   Admin
@@ -54,19 +60,50 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
               )}
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400">{user.email}</p>
-            <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center justify-center sm:justify-start gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              Tài khoản xác thực Google OAuth 2.0
-            </div>
+            {user.isGuest ? (
+              <div className="text-xs text-amber-600 dark:text-amber-400 font-semibold flex items-center justify-center sm:justify-start gap-1">
+                <Sparkles className="w-3.5 h-3.5" />
+                Trạng thái: Khách chưa đăng nhập
+              </div>
+            ) : (
+              <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center justify-center sm:justify-start gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                Đã xác thực Google OAuth & Đồng bộ Firestore
+              </div>
+            )}
           </div>
         </div>
 
-        <button
-          onClick={onOpenAuthModal}
-          className="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold rounded-xl text-xs transition-colors shrink-0 whitespace-nowrap"
-        >
-          Đổi tài khoản Google
-        </button>
+        <div className="flex items-center gap-2 shrink-0">
+          {user.isGuest ? (
+            <button
+              onClick={onOpenAuthModal}
+              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs shadow-md transition-all flex items-center gap-2"
+            >
+              <UserCheck className="w-4 h-4" />
+              <span>Đăng nhập Google</span>
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={onOpenAuthModal}
+                className="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold rounded-xl text-xs transition-colors whitespace-nowrap"
+              >
+                Đổi tài khoản Google
+              </button>
+              {onLogout && (
+                <button
+                  onClick={onLogout}
+                  className="px-3.5 py-2 bg-red-50 dark:bg-red-950/60 hover:bg-red-100 dark:hover:bg-red-900/60 text-red-700 dark:text-red-300 font-semibold rounded-xl text-xs transition-colors flex items-center gap-1.5 whitespace-nowrap"
+                  title="Đăng xuất tài khoản"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Đăng xuất</span>
+                </button>
+              )}
+            </>
+          )}
+        </div>
       </div>
 
       {/* Stats Summary Grid */}

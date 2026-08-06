@@ -11,6 +11,7 @@ export interface User {
   streak: number;
   xp: number;
   completedLessons: string[];
+  isGuest?: boolean;
 }
 
 export interface VocabularyItem {

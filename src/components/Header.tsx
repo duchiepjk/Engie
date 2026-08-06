@@ -38,17 +38,17 @@ export const Header: React.FC<HeaderProps> = ({
   onRoleSwitch,
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-xs transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+    <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-xs transition-colors duration-200 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 gap-2 sm:gap-4">
           
           {/* Logo Brand */}
           <div 
             onClick={() => setActiveTab('home')} 
-            className="flex items-center gap-2.5 cursor-pointer group shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group shrink-0"
             id="header-brand-logo"
           >
-            <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center bg-white dark:bg-slate-800 border border-indigo-100 dark:border-slate-700">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl overflow-hidden shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center bg-white dark:bg-slate-800 border border-indigo-100 dark:border-slate-700">
               <img 
                 src="/src/assets/images/english_hub_logo_1785896964079.jpg" 
                 alt="Engie Logo" 
@@ -56,8 +56,8 @@ export const Header: React.FC<HeaderProps> = ({
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-2xl font-bold tracking-tight font-logo-rounded bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <div className="flex items-center gap-1 sm:gap-1.5">
+              <span className="text-xl sm:text-2xl font-bold tracking-tight font-logo-rounded bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
                 Engie
               </span>
               <span className="text-[10px] font-bold font-logo-curved px-1.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-100/80 dark:border-indigo-800/80">
@@ -133,17 +133,17 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* User Profile & Action Bar */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             
             {/* Streak Counter */}
-            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/60 rounded-full text-xs font-semibold text-amber-800 dark:text-amber-300" title="Chuỗi ngày học liên tục">
-              <Flame className="w-4 h-4 text-amber-500 fill-amber-500" />
+            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/60 rounded-full text-xs font-semibold text-amber-800 dark:text-amber-300 shrink-0" title="Chuỗi ngày học liên tục">
+              <Flame className="w-4 h-4 text-amber-500 fill-amber-500 shrink-0" />
               <span>{user.streak} Ngày</span>
             </div>
 
             {/* XP Counter */}
-            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/60 rounded-full text-xs font-semibold text-indigo-800 dark:text-indigo-300" title="Điểm kinh nghiệm XP">
-              <Award className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/60 rounded-full text-xs font-semibold text-indigo-800 dark:text-indigo-300 shrink-0" title="Điểm kinh nghiệm XP">
+              <Award className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
               <span>{user.xp} XP</span>
             </div>
 
@@ -151,13 +151,13 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="header-btn-theme-toggle"
               onClick={onToggleDarkMode}
-              className="p-2 text-slate-500 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center justify-center"
+              className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center justify-center shrink-0"
               title={isDarkMode ? "Chuyển sang Giao diện Sáng (Light Mode)" : "Chuyển sang Giao diện Tối (Dark Mode)"}
             >
               {isDarkMode ? (
-                <Sun className="w-5 h-5 text-amber-400 transition-transform rotate-0 hover:scale-110" />
+                <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 transition-transform rotate-0 hover:scale-110" />
               ) : (
-                <Moon className="w-5 h-5 text-slate-600 hover:scale-110 transition-transform" />
+                <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-600 hover:scale-110 transition-transform" />
               )}
             </button>
 
@@ -165,38 +165,39 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="header-btn-docs"
               onClick={onOpenExportDocs}
-              className="p-2 text-slate-500 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+              className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors shrink-0"
               title="Xem Hướng dẫn Cấu hình Next.js & Prisma full-stack"
             >
-              <Code className="w-5 h-5" />
+              <Code className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             {/* Admin Toggle Switcher */}
             <button
               id="header-btn-role-switch"
               onClick={() => onRoleSwitch(user.role === 'admin' ? 'user' : 'admin')}
-              className={`px-2.5 py-1.5 text-xs font-medium rounded-lg border transition-all flex items-center gap-1 ${
+              className={`px-2 sm:px-2.5 py-1.5 text-xs font-medium rounded-lg border transition-all flex items-center gap-1 shrink-0 ${
                 user.role === 'admin'
                   ? 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800 hover:bg-purple-100 dark:hover:bg-purple-900/60'
                   : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
               }`}
               title="Đổi vai trò giữa Học viên và Admin để test tính năng"
             >
-              <ShieldCheck className="w-3.5 h-3.5" />
+              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline">{user.role === 'admin' ? 'Role: Admin' : 'Role: Học viên'}</span>
             </button>
 
             {/* Google OAuth Login Button / Avatar Profile */}
-            {user ? (
+            {!user.isGuest ? (
               <button
                 id="header-btn-profile"
                 onClick={() => setActiveTab('profile')}
-                className="flex items-center gap-2 p-1 rounded-full border border-slate-200 dark:border-slate-700 hover:border-indigo-400 transition-all bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/50"
+                className="flex items-center gap-2 p-1 rounded-full border border-slate-200 dark:border-slate-700 hover:border-indigo-400 transition-all bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/50 shrink-0"
+                title={`Hồ sơ: ${user.name} (${user.email})`}
               >
                 <img
                   src={user.avatar}
                   alt={user.name}
-                  className="w-8 h-8 rounded-full object-cover ring-2 ring-indigo-500/20"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover ring-2 ring-indigo-500/20"
                 />
                 <span className="hidden lg:inline text-xs font-semibold text-slate-700 dark:text-slate-200 pr-2">
                   {user.name.split(' ')[0]}
@@ -206,10 +207,12 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="header-btn-google-login"
                 onClick={onOpenAuthModal}
-                className="px-3 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-lg shadow-sm transition-colors flex items-center gap-1.5"
+                className="px-2.5 sm:px-3.5 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-xl shadow-md transition-all flex items-center gap-1 sm:gap-1.5 active:scale-95 shrink-0"
+                title="Đăng nhập tài khoản Google"
               >
-                <UserCheck className="w-4 h-4" />
-                Đăng Nhập Google
+                <UserCheck className="w-4 h-4 shrink-0" />
+                <span className="hidden sm:inline">Đăng Nhập Google</span>
+                <span className="inline sm:hidden">Đăng nhập</span>
               </button>
             )}
           </div>

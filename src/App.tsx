@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { User, Lesson, UserProgress } from './types';
-import { getCurrentUser, getLessons, getUserProgress, switchUserRole } from './lib/api';
-import { subscribeToUserData } from './lib/firebase';
+import { getLessons, getUserProgress, switchUserRole } from './lib/api';
+import { 
+  auth, 
+  onAuthStateChanged, 
+  getUserFromFirestore, 
+  saveUserToFirestore, 
+  subscribeToUserData, 
+  logoutFromFirebase 
+} from './lib/firebase';
 import { Header } from './components/Header';
 import { GoogleAuthModal } from './components/GoogleAuthModal';
 import { ExportGuideModal } from './components/ExportGuideModal';
@@ -15,14 +22,27 @@ import { AdminPanel } from './components/AdminPanel';
 import { UserProfileView } from './components/UserProfileView';
 import { Loader2 } from 'lucide-react';
 
+const GUEST_USER: User = {
+  id: 'guest-user',
+  name: 'Khách (Chưa đăng nhập)',
+  email: 'guest@englishub.com',
+  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+  role: 'user',
+  level: 'B1',
+  streak: 0,
+  xp: 0,
+  completedLessons: [],
+  isGuest: true
+};
+
 export default function App() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User>(GUEST_USER);
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [progress, setProgress] = useState<UserProgress>({
-    userId: 'user-1',
-    xp: 450,
-    streakDays: 5,
-    completedLessonIds: ['lesson-1'],
+    userId: 'guest-user',
+    xp: 0,
+    streakDays: 0,
+    completedLessonIds: [],
     quizScores: {},
     savedVocab: [],
   });
@@ -63,46 +83,109 @@ export default function App() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const loadData = async () => {
+  // Load Lessons data
+  const loadLessonsData = async () => {
     try {
-      const userData = await getCurrentUser();
-      setUser(userData);
-
       const lessonsData = await getLessons();
       setLessons(lessonsData);
-
-      const progressData = await getUserProgress();
-      setProgress(progressData);
     } catch (err) {
-      console.error('Failed to load initial data:', err);
+      console.error('Failed to load lessons data:', err);
     } finally {
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    loadData();
+    loadLessonsData();
   }, []);
 
-  // Real-time listener for user data & progress in Firestore
+  // Firebase Auth State Listener & Local User Loader
   useEffect(() => {
-    if (!user?.id) return;
-    const unsubscribe = subscribeToUserData(user.id, (firestoreData) => {
-      if (firestoreData) {
-        setUser((prev) => prev ? { ...prev, ...firestoreData } : prev);
-        if (firestoreData.xp !== undefined || firestoreData.completedLessons !== undefined) {
-          setProgress((prev) => ({
-            ...prev,
-            xp: firestoreData.xp ?? prev.xp,
-            streakDays: firestoreData.streak ?? prev.streakDays,
-            completedLessonIds: firestoreData.completedLessons ?? prev.completedLessonIds,
-            quizScores: firestoreData.quizScores ?? prev.quizScores
-          }));
+    const unsubscribeAuth = onAuthStateChanged(auth, async (fbUser) => {
+      if (fbUser) {
+        // User logged in via Firebase Auth Google Popup
+        const existingFirestoreUser = await getUserFromFirestore(fbUser.uid);
+        const appUser: User = {
+          id: fbUser.uid,
+          name: fbUser.displayName || fbUser.email?.split('@')[0] || 'Tài khoản Google',
+          email: fbUser.email || '',
+          avatar: fbUser.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80',
+          role: (fbUser.email && fbUser.email.includes('admin')) ? 'admin' : 'user',
+          level: existingFirestoreUser?.level || 'B1',
+          streak: existingFirestoreUser?.streak ?? 1,
+          xp: existingFirestoreUser?.xp ?? 100,
+          completedLessons: existingFirestoreUser?.completedLessons || [],
+          isGuest: false
+        };
+
+        await saveUserToFirestore(appUser);
+        setUser(appUser);
+        localStorage.setItem('engie_logged_user', JSON.stringify(appUser));
+      } else {
+        // Check if there is a saved logged in user in localStorage
+        const savedJson = localStorage.getItem('engie_logged_user');
+        if (savedJson) {
+          try {
+            const parsedUser: User = JSON.parse(savedJson);
+            const firestoreUser = await getUserFromFirestore(parsedUser.id);
+            if (firestoreUser) {
+              setUser({ ...parsedUser, ...firestoreUser, isGuest: false });
+            } else {
+              setUser({ ...parsedUser, isGuest: false });
+            }
+          } catch {
+            setUser(GUEST_USER);
+          }
+        } else {
+          setUser(GUEST_USER);
         }
       }
     });
-    return () => unsubscribe();
-  }, [user?.id]);
+
+    return () => unsubscribeAuth();
+  }, []);
+
+  // Real-time listener for user profile & progress in Firestore
+  useEffect(() => {
+    if (!user?.id || user.isGuest) {
+      setProgress({
+        userId: 'guest-user',
+        xp: 0,
+        streakDays: 0,
+        completedLessonIds: [],
+        quizScores: {},
+        savedVocab: [],
+      });
+      return;
+    }
+
+    const unsubscribeStore = subscribeToUserData(user.id, (firestoreData) => {
+      if (firestoreData) {
+        setUser((prev) => prev ? { ...prev, ...firestoreData, isGuest: false } : prev);
+        setProgress((prev) => ({
+          ...prev,
+          userId: user.id,
+          xp: firestoreData.xp ?? prev.xp,
+          streakDays: firestoreData.streak ?? prev.streakDays,
+          completedLessonIds: firestoreData.completedLessons ?? prev.completedLessonIds,
+          quizScores: firestoreData.quizScores ?? prev.quizScores
+        }));
+      }
+    });
+
+    return () => unsubscribeStore();
+  }, [user?.id, user?.isGuest]);
+
+  const handleLogout = async () => {
+    try {
+      await logoutFromFirebase();
+    } catch (e) {
+      console.warn('Logout warning:', e);
+    }
+    localStorage.removeItem('engie_logged_user');
+    setUser(GUEST_USER);
+    setActiveTab('home');
+  };
 
   const handleSelectLesson = (lesson: Lesson) => {
     setSelectedLesson(lesson);
@@ -114,11 +197,10 @@ export default function App() {
   };
 
   const handleFinishQuiz = async () => {
-    // Refresh progress data
     try {
       const updatedProgress = await getUserProgress();
       setProgress(updatedProgress);
-      if (user) {
+      if (user && !user.isGuest) {
         setUser({ ...user, xp: updatedProgress.xp, completedLessons: updatedProgress.completedLessonIds });
       }
     } catch (e) {
@@ -146,12 +228,12 @@ export default function App() {
     }
   };
 
-  if (isLoading || !user) {
+  if (isLoading) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-4">
         <div className="flex flex-col items-center gap-3 text-slate-600 dark:text-slate-300">
           <Loader2 className="w-8 h-8 animate-spin text-indigo-600 dark:text-indigo-400" />
-          <p className="text-xs font-semibold">Đang tải nền tảng Engie AI...</p>
+          <p className="text-xs font-semibold">Đang tải nền tảng Engie AI & Firestore...</p>
         </div>
       </div>
     );
@@ -184,6 +266,7 @@ export default function App() {
             onSelectLesson={handleSelectLesson}
             onNavigateTab={setActiveTab}
             onOpenAiQuiz={() => setIsAiQuizOpen(true)}
+            onOpenAuthModal={() => setIsAuthModalOpen(true)}
           />
         )}
 
@@ -218,7 +301,7 @@ export default function App() {
         {activeTab === 'admin' && (
           <AdminPanel
             lessons={lessons}
-            onRefreshLessons={loadData}
+            onRefreshLessons={loadLessonsData}
           />
         )}
 
@@ -229,22 +312,30 @@ export default function App() {
             lessons={lessons}
             onSelectLesson={handleSelectLesson}
             onOpenAuthModal={() => setIsAuthModalOpen(true)}
+            onLogout={handleLogout}
           />
         )}
 
       </main>
 
       {/* Footer */}
-      <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-indigo-700 dark:text-indigo-400 font-logo-rounded">Engie AI</span>
-            <span>- Nền tảng học tiếng Anh thông minh</span>
+      <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-5 sm:py-6 pb-8 sm:pb-6 text-xs text-slate-500 dark:text-slate-400 overflow-x-hidden transition-colors duration-200">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+            <span className="font-bold text-indigo-700 dark:text-indigo-400 font-logo-rounded text-sm sm:text-xs">Engie AI</span>
+            <span className="text-slate-600 dark:text-slate-400 font-medium">Nền tảng học tiếng Anh thông minh với Firebase</span>
           </div>
-          <div className="flex items-center gap-4 text-slate-400 dark:text-slate-500">
-            <span>Next.js 14 App Router Ready</span>
-            <span>Google OAuth 2.0</span>
-            <span>Gemini AI Tutor</span>
+          <div className="text-[11px] sm:text-xs text-slate-400 dark:text-slate-500 font-normal">
+            <span className="hidden sm:inline-flex items-center gap-3">
+              <span>Firebase Auth Google</span>
+              <span>•</span>
+              <span>Firestore Database</span>
+              <span>•</span>
+              <span>Gemini AI Tutor</span>
+            </span>
+            <span className="inline-block sm:hidden">
+              Tích hợp Firebase Firestore & Gemini AI
+            </span>
           </div>
         </div>
       </footer>
@@ -254,8 +345,8 @@ export default function App() {
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
         onSuccess={(newUser) => {
-          setUser(newUser);
-          loadData();
+          setUser({ ...newUser, isGuest: false });
+          localStorage.setItem('engie_logged_user', JSON.stringify(newUser));
         }}
       />
 
@@ -273,3 +364,4 @@ export default function App() {
     </div>
   );
 }
+

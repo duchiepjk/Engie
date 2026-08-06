@@ -24,6 +24,7 @@ interface HomeDashboardProps {
   onSelectLesson: (lesson: Lesson) => void;
   onNavigateTab: (tab: string) => void;
   onOpenAiQuiz: () => void;
+  onOpenAuthModal?: () => void;
 }
 
 export const HomeDashboard: React.FC<HomeDashboardProps> = ({
@@ -33,6 +34,7 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
   onSelectLesson,
   onNavigateTab,
   onOpenAiQuiz,
+  onOpenAuthModal,
 }) => {
   const completedCount = progress.completedLessonIds.length;
   const totalLessons = lessons.length;
@@ -92,6 +94,31 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       
+      {/* Guest Mode Sync Alert Banner */}
+      {user.isGuest && (
+        <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/70 border border-amber-200 dark:border-amber-800/80 text-amber-900 dark:text-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="font-bold text-sm">Bạn đang duyệt ở trạng thái Khách!</div>
+              <div className="text-xs text-amber-800/90 dark:text-amber-300/90">
+                Đăng nhập bằng tài khoản Google để tự động lưu điểm XP, chuỗi học liên tục và đồng bộ tiến độ Firestore.
+              </div>
+            </div>
+          </div>
+          {onOpenAuthModal && (
+            <button
+              onClick={onOpenAuthModal}
+              className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl transition-all shadow-md shrink-0 whitespace-nowrap"
+            >
+              Đăng nhập Google ngay
+            </button>
+          )}
+        </div>
+      )}
+
       {/* Welcome Hero Banner */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900 via-indigo-800 to-blue-900 text-white p-6 sm:p-8 shadow-xl">
         {/* Subtle background glow graphics */}

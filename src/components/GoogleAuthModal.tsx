@@ -95,8 +95,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Đăng nhập bằng Google</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Google OAuth 2.0 Identity Provider</p>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">Đăng nhập bằng Google</h3>
             </div>
           </div>
           <button 
@@ -119,13 +118,13 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
             <button
               onClick={handleFirebaseAuthPopup}
               disabled={isLoading}
-              className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl text-sm shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 group"
+              className="w-full py-3 px-3 sm:px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl text-sm shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 group whitespace-nowrap shrink-0"
             >
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
               ) : (
                 <>
-                  <svg className="w-5 h-5 bg-white rounded-full p-0.5" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 bg-white rounded-full p-0.5 shrink-0" viewBox="0 0 24 24">
                     <path
                       fill="#4285F4"
                       d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"
@@ -143,7 +142,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
                       d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.61l3.99 3.15c.95-2.85 3.6-4.96 6.72-4.96z"
                     />
                   </svg>
-                  <span>Đăng nhập Google qua Firebase Auth (Popup)</span>
+                  <span>Đăng nhập với Google</span>
                 </>
               )}
             </button>
