@@ -1,0 +1,6 @@
+{
+  "name": "Engie AI - Nền Tảng Học Tiếng Anh Thông Minh",
+  "description": "Website học tiếng Anh full-stack với từ vựng, ngữ pháp, luyện nghe, trắc nghiệm, theo dõi tiến độ, Admin Panel và Gia sư AI Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

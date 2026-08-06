@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html.dark body {
+  background-color: #020617;
+  color: #f8fafc;
+}
+
+.font-logo-curved {
+  font-family: 'Comfortaa', 'Quicksand', sans-serif;
+}
+
+.font-brand-script {
+  font-family: 'Pacifico', cursive;
+}
+
+.font-logo-rounded {
+  font-family: 'Fredoka', 'Comfortaa', sans-serif;
+}
+

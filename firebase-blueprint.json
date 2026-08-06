@@ -1,0 +1,38 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profiles",
+      "description": "Synchronized user profiles and progress",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "avatar": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "level": { "type": "string" },
+        "streak": { "type": "number" },
+        "xp": { "type": "number" },
+        "completedLessons": { "type": "array", "items": { "type": "string" } },
+        "quizScores": { "type": "object" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["email", "name"]
+    },
+    "lessons": {
+      "title": "Lessons",
+      "description": "Dynamic English lessons and quizzes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "level": { "type": "string" },
+        "description": { "type": "string" },
+        "durationMinutes": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "category", "level"]
+    }
+  }
+}
