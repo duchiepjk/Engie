@@ -15,5 +15,15 @@ service cloud.firestore {
       allow read: if true;
       allow write: if true;
     }
+
+    match /flashcards/{flashcardId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /progress/{progressId} {
+      allow read: if true;
+      allow write: if true;
+    }
   }
 }

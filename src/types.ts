@@ -60,6 +60,7 @@ export interface Lesson {
   id: string;
   title: string;
   category: LessonCategory;
+  topic?: string;
   level: CEFRLevel;
   description: string;
   durationMinutes: number;

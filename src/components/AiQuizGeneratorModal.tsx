@@ -36,7 +36,7 @@ export const AiQuizGeneratorModal: React.FC<AiQuizGeneratorModalProps> = ({
 
       const customLesson: Lesson = {
         id: `custom-ai-${Date.now()}`,
-        title: `Trắc Nghiệm AI: ${topic}`,
+        title: `Trắc nghiệm AI: ${topic}`,
         category: 'vocabulary',
         level: level as any,
         description: `Bài trắc nghiệm được tạo tự động bởi Gemini AI cho chủ đề "${topic}".`,

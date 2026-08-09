@@ -1,8 +1,48 @@
+# 1. Dependencies
 node_modules/
-build/
-dist/
-coverage/
-.DS_Store
-*.log
-.env*
+.pnpm-store/
+.bun/
+bun.lock
+
+# 2. Environment & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
 !.env.example
+
+# 3. Build & Output Files
+dist/
+build/
+out/
+coverage/
+
+# 4. Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 5. OS & System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 6. Editor & IDE Settings
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvsopt
+*.njsproj
+*.sln
+*.swp
+*.swo

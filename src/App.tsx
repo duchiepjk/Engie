@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { User, Lesson, UserProgress } from './types';
+import { User, Lesson, UserProgress, CEFRLevel } from './types';
 import { getLessons, getUserProgress, switchUserRole } from './lib/api';
 import { 
   auth, 
   onAuthStateChanged, 
   getUserFromFirestore, 
   saveUserToFirestore, 
+  syncFirebaseUserToFirestore,
   subscribeToUserData, 
-  logoutFromFirebase 
+  logoutFromFirebase,
+  updateUserLevelInFirestore
 } from './lib/firebase';
 import { Header } from './components/Header';
 import { GoogleAuthModal } from './components/GoogleAuthModal';
@@ -103,22 +105,8 @@ export default function App() {
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
-        // User logged in via Firebase Auth Google Popup
-        const existingFirestoreUser = await getUserFromFirestore(fbUser.uid);
-        const appUser: User = {
-          id: fbUser.uid,
-          name: fbUser.displayName || fbUser.email?.split('@')[0] || 'Tài khoản Google',
-          email: fbUser.email || '',
-          avatar: fbUser.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80',
-          role: (fbUser.email && fbUser.email.includes('admin')) ? 'admin' : 'user',
-          level: existingFirestoreUser?.level || 'B1',
-          streak: existingFirestoreUser?.streak ?? 1,
-          xp: existingFirestoreUser?.xp ?? 100,
-          completedLessons: existingFirestoreUser?.completedLessons || [],
-          isGuest: false
-        };
-
-        await saveUserToFirestore(appUser);
+        // User logged in via Firebase Auth Google
+        const appUser = await syncFirebaseUserToFirestore(fbUser);
         setUser(appUser);
         localStorage.setItem('engie_logged_user', JSON.stringify(appUser));
       } else {
@@ -176,6 +164,13 @@ export default function App() {
     return () => unsubscribeStore();
   }, [user?.id, user?.isGuest]);
 
+  // Route protection: Only users with role === 'admin' can access 'admin' tab
+  useEffect(() => {
+    if (activeTab === 'admin' && user.role !== 'admin') {
+      setActiveTab('home');
+    }
+  }, [activeTab, user.role]);
+
   const handleLogout = async () => {
     try {
       await logoutFromFirebase();
@@ -185,6 +180,22 @@ export default function App() {
     localStorage.removeItem('engie_logged_user');
     setUser(GUEST_USER);
     setActiveTab('home');
+  };
+
+  const handleUpdateUserLevel = async (newLevel: CEFRLevel) => {
+    setUser((prev) => ({ ...prev, level: newLevel }));
+    if (user && !user.isGuest && user.id) {
+      await updateUserLevelInFirestore(user.id, newLevel);
+    }
+    const savedJson = localStorage.getItem('engie_logged_user');
+    if (savedJson) {
+      try {
+        const parsed = JSON.parse(savedJson);
+        localStorage.setItem('engie_logged_user', JSON.stringify({ ...parsed, level: newLevel }));
+      } catch (e) {
+        console.warn('Error updating local storage level:', e);
+      }
+    }
   };
 
   const handleSelectLesson = (lesson: Lesson) => {
@@ -275,6 +286,7 @@ export default function App() {
             lessons={lessons}
             progress={progress}
             onSelectLesson={handleSelectLesson}
+            userLevel={user.level}
           />
         )}
 
@@ -302,6 +314,7 @@ export default function App() {
           <AdminPanel
             lessons={lessons}
             onRefreshLessons={loadLessonsData}
+            currentUser={user}
           />
         )}
 
@@ -313,6 +326,7 @@ export default function App() {
             onSelectLesson={handleSelectLesson}
             onOpenAuthModal={() => setIsAuthModalOpen(true)}
             onLogout={handleLogout}
+            onUpdateLevel={handleUpdateUserLevel}
           />
         )}
 
@@ -351,7 +365,7 @@ export default function App() {
       />
 
       <ExportGuideModal
-        isOpen={isExportDocsOpen}
+        isOpen={isExportDocsOpen && (import.meta.env.DEV || user.role === 'admin')}
         onClose={() => setIsExportDocsOpen(false)}
       />
 

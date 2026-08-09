@@ -1,5 +1,6 @@
 import React from 'react';
 import { User } from '../types';
+import logoImg from '../assets/images/english_hub_logo_1785896964079.jpg';
 import { 
   BookOpen, 
   Sparkles, 
@@ -50,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl overflow-hidden shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center bg-white dark:bg-slate-800 border border-indigo-100 dark:border-slate-700">
               <img 
-                src="/src/assets/images/english_hub_logo_1785896964079.jpg" 
+                src={logoImg} 
                 alt="Engie Logo" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -127,7 +128,7 @@ export const Header: React.FC<HeaderProps> = ({
                 }`}
               >
                 <ShieldCheck className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
-                <span>Quản trị Admin</span>
+                <span>Trang quản trị</span>
               </button>
             )}
           </nav>
@@ -152,7 +153,7 @@ export const Header: React.FC<HeaderProps> = ({
               id="header-btn-theme-toggle"
               onClick={onToggleDarkMode}
               className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center justify-center shrink-0"
-              title={isDarkMode ? "Chuyển sang Giao diện Sáng (Light Mode)" : "Chuyển sang Giao diện Tối (Dark Mode)"}
+              title={isDarkMode ? "Chuyển sang giao diện sáng (Light Mode)" : "Chuyển sang giao diện tối (Dark Mode)"}
             >
               {isDarkMode ? (
                 <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 transition-transform rotate-0 hover:scale-110" />
@@ -161,30 +162,34 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </button>
 
-            {/* Next.js Export Docs Button */}
-            <button
-              id="header-btn-docs"
-              onClick={onOpenExportDocs}
-              className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors shrink-0"
-              title="Xem Hướng dẫn Cấu hình Next.js & Prisma full-stack"
-            >
-              <Code className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
+            {/* Next.js Export Docs Button (Only visible for Admin or in DEV mode) */}
+            {(import.meta.env.DEV || user.role === 'admin') && (
+              <button
+                id="header-btn-docs"
+                onClick={onOpenExportDocs}
+                className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors shrink-0"
+                title="Xem hướng dẫn cấu hình Next.js & Prisma full-stack"
+              >
+                <Code className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            )}
 
-            {/* Admin Toggle Switcher */}
-            <button
-              id="header-btn-role-switch"
-              onClick={() => onRoleSwitch(user.role === 'admin' ? 'user' : 'admin')}
-              className={`px-2 sm:px-2.5 py-1.5 text-xs font-medium rounded-lg border transition-all flex items-center gap-1 shrink-0 ${
-                user.role === 'admin'
-                  ? 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800 hover:bg-purple-100 dark:hover:bg-purple-900/60'
-                  : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
-              }`}
-              title="Đổi vai trò giữa Học viên và Admin để test tính năng"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">{user.role === 'admin' ? 'Role: Admin' : 'Role: Học viên'}</span>
-            </button>
+            {/* Admin Badge / Role Switcher (Toggle in DEV, Badge in PROD) */}
+            {(import.meta.env.DEV || user.role === 'admin') && (
+              <button
+                id="header-btn-role-switch"
+                onClick={() => import.meta.env.DEV && onRoleSwitch(user.role === 'admin' ? 'user' : 'admin')}
+                className={`px-2 sm:px-2.5 py-1.5 text-xs font-medium rounded-lg border transition-all flex items-center gap-1 shrink-0 ${
+                  user.role === 'admin'
+                    ? 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800 hover:bg-purple-100 dark:hover:bg-purple-900/60'
+                    : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
+                }`}
+                title={import.meta.env.DEV ? "Đổi vai trò giữa học viên và Admin (Dev Mode)" : "Xác thực vai trò quản trị viên"}
+              >
+                <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+                <span className="hidden sm:inline">{user.role === 'admin' ? 'Role: Admin' : 'Role: Học viên'}</span>
+              </button>
+            )}
 
             {/* Google OAuth Login Button / Avatar Profile */}
             {!user.isGuest ? (
@@ -249,6 +254,15 @@ export const Header: React.FC<HeaderProps> = ({
           <Sparkles className="w-4 h-4 text-amber-500" />
           Quiz AI
         </button>
+        {user.role === 'admin' && (
+          <button
+            onClick={() => setActiveTab('admin')}
+            className={`flex flex-col items-center gap-0.5 ${activeTab === 'admin' ? 'text-purple-600 dark:text-purple-400 font-semibold' : 'text-slate-500 dark:text-slate-400'}`}
+          >
+            <ShieldCheck className="w-4 h-4 text-purple-600" />
+            Quản trị
+          </button>
+        )}
       </div>
     </header>
   );

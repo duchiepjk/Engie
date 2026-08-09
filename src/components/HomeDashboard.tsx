@@ -314,21 +314,6 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
 
-                  <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className="px-2.5 py-1 text-[11px] font-bold uppercase rounded-lg bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-slate-800 dark:text-slate-200 shadow-xs">
-                      {lesson.level}
-                    </span>
-                    <span className={`px-2.5 py-1 text-[11px] font-bold uppercase rounded-lg backdrop-blur-md shadow-xs ${
-                      lesson.category === 'vocabulary'
-                        ? 'bg-blue-600 text-white'
-                        : lesson.category === 'grammar'
-                        ? 'bg-emerald-600 text-white'
-                        : 'bg-purple-600 text-white'
-                    }`}>
-                      {lesson.category === 'vocabulary' ? 'Từ vựng' : lesson.category === 'grammar' ? 'Ngữ pháp' : 'Luyện nghe'}
-                    </span>
-                  </div>
-
                   {isCompleted && (
                     <div className="absolute top-3 right-3 px-2.5 py-1 bg-emerald-500 text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-md">
                       <CheckCircle2 className="w-3.5 h-3.5" />
@@ -336,14 +321,30 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
                     </div>
                   )}
 
-                  <div className="absolute bottom-3 left-3 right-3 text-white flex items-center gap-2 text-xs font-medium">
-                    <Clock className="w-3.5 h-3.5 text-indigo-200" />
-                    <span>Thời lượng: {lesson.durationMinutes} phút</span>
+                  <div className="absolute bottom-3 left-3 right-3 text-white flex items-center justify-between text-xs font-medium">
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-indigo-200" />
+                      <span>Thời lượng: {lesson.durationMinutes} phút</span>
+                    </div>
+                    <span className="px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-md text-[11px] font-bold text-white shadow-xs">
+                      {lesson.level}
+                    </span>
                   </div>
                 </div>
 
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                   <div>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className={`text-[11px] font-bold uppercase tracking-wider ${
+                        lesson.category === 'vocabulary'
+                          ? 'text-blue-600 dark:text-blue-400'
+                          : lesson.category === 'grammar'
+                          ? 'text-emerald-600 dark:text-emerald-400'
+                          : 'text-purple-600 dark:text-purple-400'
+                      }`}>
+                        {lesson.category === 'vocabulary' ? 'Từ vựng' : lesson.category === 'grammar' ? 'Ngữ pháp' : 'Luyện nghe'}
+                      </span>
+                    </div>
                     <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
                       {lesson.title}
                     </h3>

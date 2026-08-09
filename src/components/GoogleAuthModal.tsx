@@ -20,6 +20,9 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Show mock demo accounts only in development mode or when explicitly enabled
+  const showMockAccounts = import.meta.env.DEV || import.meta.env.VITE_SHOW_MOCK_ACCOUNTS === 'true';
+
   if (!isOpen) return null;
 
   const handleFirebaseAuthPopup = async () => {
@@ -152,60 +155,64 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
             </p>
           </div>
 
-          <div className="relative flex items-center py-0.5">
-            <div className="grow border-t border-slate-200 dark:border-slate-800"></div>
-            <span className="shrink mx-3 text-[11px] text-slate-400 dark:text-slate-500 uppercase font-semibold">Hoặc dùng thử tài khoản sẵn có</span>
-            <div className="grow border-t border-slate-200 dark:border-slate-800"></div>
-          </div>
-
-          {/* Quick Select Preset Demo Accounts */}
-          <div className="space-y-2.5">
-            <button
-              onClick={() => handleQuickLogin('hocvien@gmail.com', 'Nguyễn Văn Học', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80')}
-              disabled={isLoading}
-              className="w-full flex items-center justify-between p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:bg-indigo-50/40 dark:hover:bg-indigo-950/30 transition-all text-left group"
-            >
-              <div className="flex items-center gap-3">
-                <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
-                  alt="Học viên"
-                  className="w-9 h-9 rounded-full object-cover"
-                />
-                <div>
-                  <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-700 dark:group-hover:text-indigo-400">
-                    Nguyễn Văn Học (Học viên)
-                  </div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">hocvien@gmail.com</div>
-                </div>
+          {/* Quick Select Preset Demo Accounts (Only in DEV) */}
+          {showMockAccounts && (
+            <>
+              <div className="relative flex items-center py-0.5">
+                <div className="grow border-t border-slate-200 dark:border-slate-800"></div>
+                <span className="shrink mx-3 text-[11px] text-slate-400 dark:text-slate-500 uppercase font-semibold">Hoặc dùng thử tài khoản sẵn có</span>
+                <div className="grow border-t border-slate-200 dark:border-slate-800"></div>
               </div>
-              <span className="text-xs font-medium px-2 py-0.5 bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 rounded-md">
-                Học viên (B1)
-              </span>
-            </button>
 
-            <button
-              onClick={() => handleQuickLogin('admin.englishub@gmail.com', 'Quản Trị Viên (Admin)', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80')}
-              disabled={isLoading}
-              className="w-full flex items-center justify-between p-2.5 rounded-xl border border-purple-200 dark:border-purple-900/60 hover:border-purple-500 hover:bg-purple-50/40 dark:hover:bg-purple-950/30 transition-all text-left group"
-            >
-              <div className="flex items-center gap-3">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
-                  alt="Admin"
-                  className="w-9 h-9 rounded-full object-cover"
-                />
-                <div>
-                  <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-purple-700 dark:group-hover:text-purple-400">
-                    Quản Trị Viên (Admin)
+              <div className="space-y-2.5">
+                <button
+                  onClick={() => handleQuickLogin('hocvien@gmail.com', 'Nguyễn Văn Học', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80')}
+                  disabled={isLoading}
+                  className="w-full flex items-center justify-between p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:bg-indigo-50/40 dark:hover:bg-indigo-950/30 transition-all text-left group"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+                      alt="Học viên"
+                      className="w-9 h-9 rounded-full object-cover"
+                    />
+                    <div>
+                      <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-700 dark:group-hover:text-indigo-400">
+                        Nguyễn Văn Học (Học viên)
+                      </div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">hocvien@gmail.com</div>
+                    </div>
                   </div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">admin.englishub@gmail.com</div>
-                </div>
+                  <span className="text-xs font-medium px-2 py-0.5 bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 rounded-md">
+                    Học viên (B1)
+                  </span>
+                </button>
+
+                <button
+                  onClick={() => handleQuickLogin('admin.englishub@gmail.com', 'Quản Trị Viên (Admin)', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80')}
+                  disabled={isLoading}
+                  className="w-full flex items-center justify-between p-2.5 rounded-xl border border-purple-200 dark:border-purple-900/60 hover:border-purple-500 hover:bg-purple-50/40 dark:hover:bg-purple-950/30 transition-all text-left group"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+                      alt="Admin"
+                      className="w-9 h-9 rounded-full object-cover"
+                    />
+                    <div>
+                      <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-purple-700 dark:group-hover:text-purple-400">
+                        Quản Trị Viên (Admin)
+                      </div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">admin.englishub@gmail.com</div>
+                    </div>
+                  </div>
+                  <span className="text-xs font-medium px-2 py-0.5 bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 rounded-md">
+                    Admin
+                  </span>
+                </button>
               </div>
-              <span className="text-xs font-medium px-2 py-0.5 bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 rounded-md">
-                Admin
-              </span>
-            </button>
-          </div>
+            </>
+          )}
 
           <div className="relative flex items-center py-0.5">
             <div className="grow border-t border-slate-200 dark:border-slate-800"></div>
@@ -217,7 +224,7 @@ export const GoogleAuthModal: React.FC<GoogleAuthModalProps> = ({
           <form onSubmit={handleSubmitCustom} className="space-y-3">
             <div>
               <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Tên hiển thị Google
+                Tên đăng nhập
               </label>
               <input
                 type="text"
