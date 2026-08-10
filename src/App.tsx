@@ -225,6 +225,10 @@ export default function App() {
     setActiveTab('quiz');
   };
 
+  const handleAddCustomLesson = (newLesson: Lesson) => {
+    setLessons((prev) => [newLesson, ...prev]);
+  };
+
   const handleRoleSwitch = async (role: 'user' | 'admin') => {
     try {
       const updatedUser = await switchUserRole(role);
@@ -286,6 +290,7 @@ export default function App() {
             lessons={lessons}
             progress={progress}
             onSelectLesson={handleSelectLesson}
+            onAddCustomLesson={handleAddCustomLesson}
             userLevel={user.level}
           />
         )}

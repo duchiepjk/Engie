@@ -13,12 +13,119 @@ import {
   CheckCircle2, 
   FileText, 
   Briefcase, 
-  Lightbulb 
+  Lightbulb,
+  Languages
 } from 'lucide-react';
 
 interface AiTutorChatProps {
   user: User;
 }
+
+interface AiChatMessageItemProps {
+  msg: ChatMessage;
+  user: User;
+  onSendSuggestedReply: (text: string) => void;
+}
+
+const AiChatMessageItem: React.FC<AiChatMessageItemProps> = ({ msg, user, onSendSuggestedReply }) => {
+  const [showTranslation, setShowTranslation] = useState<boolean>(false);
+
+  return (
+    <div
+      className={`flex items-start gap-2 sm:gap-3 ${msg.sender === 'user' ? 'flex-row-reverse' : ''}`}
+    >
+      {/* Avatar */}
+      {msg.sender === 'ai' ? (
+        <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+          <Bot className="w-5 h-5" />
+        </div>
+      ) : (
+        <img
+          src={user.avatar}
+          alt={user.name}
+          className="w-8 h-8 rounded-full object-cover shrink-0 ring-2 ring-indigo-500/20"
+        />
+      )}
+
+      {/* Message Card */}
+      <div className={`relative max-w-[88%] sm:max-w-[78%] rounded-2xl p-3.5 sm:p-4 space-y-2.5 shadow-2xs ${
+        msg.sender === 'user'
+          ? 'bg-indigo-600 text-white rounded-tr-xs'
+          : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-tl-xs'
+      }`}>
+        {/* Main message text rendered with Markdown (English response / feedback) */}
+        <div className="leading-relaxed font-medium text-sm sm:text-base [&_p]:mb-1.5 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_em]:italic [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_code]:bg-black/10 dark:[&_code]:bg-white/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded-md [&_code]:text-sm">
+          <ReactMarkdown>{msg.text}</ReactMarkdown>
+        </div>
+
+        {/* Vietnamese Translation Section - Hidden by default */}
+        {msg.sender === 'ai' && msg.translation && (
+          <div className="space-y-1">
+            {showTranslation && (
+              <div className="pt-2.5 pb-2 px-3 border-t border-slate-100 dark:border-slate-700/60 bg-slate-50/90 dark:bg-slate-900/50 rounded-xl animate-in fade-in slide-in-from-top-1 duration-200 space-y-1">
+                <div className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1 uppercase tracking-wider">
+                  <Languages className="w-3.5 h-3.5" />
+                  <span>Bản dịch tiếng Việt:</span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 italic leading-relaxed">
+                  {msg.translation}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Action buttons and timestamps for AI messages */}
+        {msg.sender === 'ai' && (
+          <div className="pt-2 flex items-center justify-between text-xs sm:text-sm border-t border-slate-100 dark:border-slate-700/60 text-slate-400 dark:text-slate-500 gap-2 flex-wrap">
+            <span className="text-[11px] sm:text-xs text-slate-400 dark:text-slate-500 font-normal">{msg.timestamp}</span>
+            
+            <div className="flex items-center gap-2">
+              {/* Toggle Translation Button */}
+              {msg.translation && (
+                <button
+                  onClick={() => setShowTranslation(!showTranslation)}
+                  className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${
+                    showTranslation
+                      ? 'bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                      : 'bg-slate-50 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700'
+                  }`}
+                  title={showTranslation ? "Ẩn bản dịch tiếng Việt" : "Xem bản dịch tiếng Việt"}
+                >
+                  <Languages className="w-3.5 h-3.5 text-indigo-500" />
+                  <span>{showTranslation ? "Ẩn bản dịch" : "Xem bản dịch"}</span>
+                </button>
+              )}
+
+              {/* Pronunciation audio button */}
+              <button
+                onClick={() => speakEnglishText(msg.text)}
+                className="px-2.5 py-1 bg-indigo-50/80 dark:bg-indigo-950/40 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/60 rounded-xl text-xs font-bold flex items-center gap-1 transition-all cursor-pointer"
+                title="Nghe phát âm tiếng Anh"
+              >
+                <Volume2 className="w-3.5 h-3.5" />
+                <span>Nghe phát âm</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Quick Reply Chip */}
+        {msg.suggestedReply && (
+          <div className="pt-1.5">
+            <button
+              onClick={() => onSendSuggestedReply(msg.suggestedReply!)}
+              className="px-3 py-2 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/80 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 text-left cursor-pointer transition-all"
+            >
+              <Lightbulb className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <span>Gợi ý: "{msg.suggestedReply}"</span>
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export const AiTutorChat: React.FC<AiTutorChatProps> = ({ user }) => {
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -68,6 +175,8 @@ export const AiTutorChat: React.FC<AiTutorChatProps> = ({ user }) => {
         id: `msg-ai-${Date.now()}`,
         sender: 'ai',
         text: res.text,
+        translation: res.translation,
+        suggestedReply: res.suggestedReply,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
 
@@ -130,68 +239,12 @@ export const AiTutorChat: React.FC<AiTutorChatProps> = ({ user }) => {
       {/* Messages Thread */}
       <div className="flex-1 p-2.5 sm:p-6 overflow-y-auto space-y-3.5 sm:space-y-4 bg-slate-50/50 dark:bg-slate-950/50">
         {messages.map((msg) => (
-          <div
+          <AiChatMessageItem
             key={msg.id}
-            className={`flex items-start gap-2 sm:gap-3 ${msg.sender === 'user' ? 'flex-row-reverse' : ''}`}
-          >
-            {/* Avatar */}
-            {msg.sender === 'ai' ? (
-              <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
-                <Bot className="w-5 h-5" />
-              </div>
-            ) : (
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className="w-8 h-8 rounded-full object-cover shrink-0 ring-2 ring-indigo-500/20"
-              />
-            )}
-
-            {/* Message Card */}
-            <div className={`max-w-[88%] sm:max-w-[78%] rounded-2xl p-3.5 sm:p-4 space-y-2 shadow-2xs ${
-              msg.sender === 'user'
-                ? 'bg-indigo-600 text-white rounded-tr-xs'
-                : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-tl-xs'
-            }`}>
-              {/* Main message text rendered with Markdown (bold, italic, lists, code) */}
-              <div className="leading-relaxed font-medium text-base [&_p]:mb-1.5 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_em]:italic [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_code]:bg-black/10 dark:[&_code]:bg-white/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded-md [&_code]:text-sm">
-                <ReactMarkdown>{msg.text}</ReactMarkdown>
-              </div>
-
-              {msg.translation && (
-                <div className="pt-2 border-t border-slate-100 dark:border-slate-700/60 text-xs sm:text-sm text-slate-500 dark:text-slate-400 italic">
-                  👉 {msg.translation}
-                </div>
-              )}
-
-              {/* Action buttons and timestamps for AI messages */}
-              {msg.sender === 'ai' && (
-                <div className="pt-2 flex items-center justify-between text-xs sm:text-sm border-t border-slate-100 dark:border-slate-700/60 text-slate-400 dark:text-slate-500">
-                  <span className="text-xs sm:text-sm text-slate-400 dark:text-slate-500 font-normal">{msg.timestamp}</span>
-                  <button
-                    onClick={() => speakEnglishText(msg.text)}
-                    className="flex items-center gap-1.5 text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                    Nghe phát âm
-                  </button>
-                </div>
-              )}
-
-              {/* Quick Reply Chip */}
-              {msg.suggestedReply && (
-                <div className="pt-2">
-                  <button
-                    onClick={() => handleSend(msg.suggestedReply)}
-                    className="px-3 py-2 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/80 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 text-left"
-                  >
-                    <Lightbulb className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                    <span>Gợi ý: "{msg.suggestedReply}"</span>
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
+            msg={msg}
+            user={user}
+            onSendSuggestedReply={(text) => handleSend(text)}
+          />
         ))}
 
         {isLoading && (

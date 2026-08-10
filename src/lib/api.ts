@@ -326,13 +326,29 @@ export async function askAiTutor(messages: ChatMessage[], level: string, mode: s
   return res.json();
 }
 
-export async function generateAiQuiz(topic: string, level: string, count: number): Promise<QuizQuestion[]> {
+export async function generateAiQuiz(
+  topic: string, 
+  level: string, 
+  count: number = 7, 
+  category?: string, 
+  grammarSections?: any[], 
+  vocabularyItems?: VocabularyItem[]
+): Promise<QuizQuestion[]> {
+  const randomSeed = `${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
   const res = await fetch('/api/ai/generate-quiz', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ topic, level, count }),
+    body: JSON.stringify({ 
+      topic, 
+      level, 
+      count, 
+      category, 
+      grammarSections, 
+      vocabularyItems,
+      randomSeed 
+    }),
   });
-  if (!res.ok) throw new Error('Failed to generate AI Quiz');
+  if (!res.ok) throw new Error('Không thể kết nối với Gemini AI để tạo bài trắc nghiệm.');
   const data = await res.json();
   return data.questions;
 }
@@ -353,6 +369,36 @@ export async function generateLessonContentAI(topic: string, level: string, cate
   if (!res.ok) {
     const errorData = await res.json();
     throw new Error(errorData.error || 'Lỗi khi kết nối với AI sinh nội dung bài học');
+  }
+  return res.json();
+}
+
+export async function sendRoleplayMessage(params: {
+  scenarioTitle: string;
+  topic?: string;
+  aiRole: string;
+  userRole: string;
+  userLevel: string;
+  conversationHistory: { role: 'ai' | 'user'; text: string }[];
+  userMessage: string;
+}): Promise<{
+  aiReply: string;
+  aiReplyVietnamese: string;
+  evaluation?: {
+    score?: string;
+    feedback?: string;
+    grammarTip?: string;
+    pronunciationTip?: string;
+  };
+}> {
+  const res = await fetch('/api/ai/roleplay', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(params),
+  });
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.error || 'Lỗi khi gửi phản hồi hội thoại tới AI');
   }
   return res.json();
 }

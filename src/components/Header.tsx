@@ -216,7 +216,7 @@ export const Header: React.FC<HeaderProps> = ({
                 title="Đăng nhập tài khoản Google"
               >
                 <UserCheck className="w-4 h-4 shrink-0" />
-                <span className="hidden sm:inline">Đăng Nhập Google</span>
+                <span className="hidden sm:inline">Đăng nhập Google</span>
                 <span className="inline sm:hidden">Đăng nhập</span>
               </button>
             )}

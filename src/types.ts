@@ -70,6 +70,7 @@ export interface Lesson {
   listeningScript?: ListeningScript;
   quizQuestions: QuizQuestion[];
   createdAt: string;
+  isAiGenerated?: boolean;
 }
 
 export interface UserProgress {

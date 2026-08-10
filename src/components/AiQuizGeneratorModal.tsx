@@ -16,7 +16,7 @@ export const AiQuizGeneratorModal: React.FC<AiQuizGeneratorModalProps> = ({
 }) => {
   const [topic, setTopic] = useState('Giao tiếp sân bay & du lịch');
   const [level, setLevel] = useState('B1');
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(7);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -118,8 +118,9 @@ export const AiQuizGeneratorModal: React.FC<AiQuizGeneratorModalProps> = ({
                 onChange={(e) => setCount(Number(e.target.value))}
                 className="w-full px-3 py-2 text-xs border border-slate-300 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-medium"
               >
-                <option value={3}>3 câu hỏi ngắn</option>
-                <option value={5}>5 câu hỏi tiêu chuẩn</option>
+                <option value={5}>5 câu hỏi ngắn</option>
+                <option value={7}>7 câu hỏi tiêu chuẩn</option>
+                <option value={10}>10 câu hỏi nâng cao</option>
               </select>
             </div>
           </div>

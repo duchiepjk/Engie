@@ -146,24 +146,41 @@ let lessons = [
     grammarSections: [
       {
         id: "g-ps-1",
-        title: "1. Công thức thì hiện tại đơn",
-        explanation: "Diễn tả hành động lặp đi lặp lại như một thói quen hoặc sự thật hiển nhiên luôn luôn đúng.",
-        formula: "Động từ Thường: (+) S + V(s/es) | (-) S + do/does + not + V0 | (?) Do/Does + S + V0?\nĐộng từ To Be: (+) S + am/is/are + N/Adj | (-) S + am/is/are + not + N/Adj",
-        examples: [
-          { english: "She works at an international bank in Hanoi.", vietnamese: "Cô ấy làm việc tại một ngân hàng quốc tế ở Hà Nội." },
-          { english: "Water freezes at 0 degrees Celsius.", vietnamese: "Nước đóng băng ở 0 độ C." },
-          { english: "They do not play football on weekdays.", vietnamese: "Họ không chơi bóng đá vào các ngày trong tuần." }
-        ]
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Mục tiêu của bài học hôm nay là giúp các em làm chủ thì hiện tại đơn (Present Simple) - nền tảng quan trọng nhất trong ngữ pháp tiếng Anh, giúp các em tự tin giới thiệu bản thân, thói quen hằng ngày và các sự thật trong cuộc sống."
       },
       {
         id: "g-ps-2",
-        title: "2. Dấu hiệu nhận biết & quy tắc thêm s/es",
-        explanation: "Dùng với trạng từ chỉ tần suất: always, usually, often, sometimes, never, every day/week/month.",
-        formula: "Thêm 'es' sau động từ kết thúc bằng: -o, -s, -ch, -x, -sh, -z (Ví dụ: watch -> watches, go -> goes)",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Thì hiện tại đơn dùng để diễn tả một hành động lặp đi lặp lại như một thói quen, một sự thật hiển nhiên hoặc một lịch trình đã định sẵn trong đời sống."
+      },
+      {
+        id: "g-ps-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Các trạng từ chỉ tần suất hay gặp: always (luôn luôn), usually (thường xuyên), often (thường), sometimes (thỉnh thoảng), never (không bao giờ); hoặc các từ như every day, every week, every month, on Mondays...",
+        formula: "Chìa khóa: Always / Usually / Often / Sometimes / Never / Every day"
+      },
+      {
+        id: "g-ps-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Động từ trong thì hiện tại đơn được chia theo hai nhóm: Động từ thường và Động từ to be.",
+        formula: "Động từ thường:\n(+) Khẳng định: S + V(s/es)\n(-) Phủ định: S + do/does + not + V0\n(?) Nghi vấn: Do/Does + S + V0?\n\nĐộng từ To Be:\n(+) Khẳng định: S + am/is/are + N/Adj\n(-) Phủ định: S + am/is/are + not + N/Adj\n(?) Nghi vấn: Am/Is/Are + S + N/Adj?"
+      },
+      {
+        id: "g-ps-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Các em hãy tham khảo các ví dụ thực tế đời thường sau đây:",
         examples: [
-          { english: "He always drinks green tea after breakfast.", vietnamese: "Anh ấy luôn uống trà xanh sau bữa sáng." },
-          { english: "My father watches the evening news every day.", vietnamese: "Bố tôi xem thời sự buổi tối mỗi ngày." }
+          { english: "She works at an international school in Hanoi.", vietnamese: "Cô ấy làm việc tại một trường quốc tế ở Hà Nội." },
+          { english: "They do not play video games on weekdays.", vietnamese: "Họ không chơi trò chơi điện tử vào các ngày trong tuần." },
+          { english: "Do you drink green tea every morning?", vietnamese: "Bạn có uống trà xanh mỗi sáng không?" },
+          { english: "Water freezes at 0 degrees Celsius.", vietnamese: "Nước đóng băng ở 0 độ C." }
         ]
+      },
+      {
+        id: "g-ps-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Thêm 'es' sau các động từ kết thúc bằng: -o, -s, -ch, -x, -sh, -z (ví dụ: watch -> watches, go -> goes).\n• Với chủ ngữ số ít (he, she, it, danh từ số ít), luôn phải chia động từ. Đừng quên chia trợ động từ 'does' trong câu phủ định và câu hỏi nhé!"
       }
     ],
     quizQuestions: [
@@ -202,23 +219,41 @@ let lessons = [
     grammarSections: [
       {
         id: "g-pc-1",
-        title: "1. Công thức & cách sử dụng chính",
-        explanation: "Diễn tả hành động đang diễn ra trực tiếp ngay tại thời điểm nói hoặc một kế hoạch đã lên lịch sẵn trong tương lai gần.",
-        formula: "(+) S + am/is/are + V-ing | (-) S + am/is/are + not + V-ing | (?) Am/Is/Are + S + V-ing?",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Bài học hôm nay cô trò mình sẽ cùng chinh phục thì hiện tại tiếp diễn (Present Continuous) để diễn tả những hành động đang diễn ra ngay lúc này hoặc các kế hoạch đã lên lịch sẵn."
+      },
+      {
+        id: "g-pc-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Thì hiện tại tiếp diễn dùng khi hành động đang trực tiếp diễn ra tại thời điểm nói, hoặc một sự việc mang tính chất tạm thời, một kế hoạch đã thu xếp chắc chắn trong tương lai gần."
+      },
+      {
+        id: "g-pc-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Các từ chỉ thời gian: now, right now, at the moment, at present; hoặc các câu cảm thán gây chú ý như Listen!, Look!, Be quiet!, Watch out!",
+        formula: "Chìa khóa: Now / Right now / At the moment / Listen! / Look!"
+      },
+      {
+        id: "g-pc-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Cấu trúc thì hiện tại tiếp diễn bắt buộc gồm động từ to be (am/is/are) đi cùng động từ thêm -ing (V-ing).",
+        formula: "(+) Khẳng định: S + am/is/are + V-ing\n(-) Phủ định: S + am/is/are + not + V-ing\n(?) Nghi vấn: Am/Is/Are + S + V-ing?"
+      },
+      {
+        id: "g-pc-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Xem các ví dụ thực tế dưới đây để hiểu cách dùng:",
         examples: [
-          { english: "Please be quiet! The baby is sleeping.", vietnamese: "Xin hãy giữ trật tự! Bé đang ngủ." },
+          { english: "Please be quiet! The baby is sleeping.", vietnamese: "Xin hãy giữ trật tự! Em bé đang ngủ." },
+          { english: "We are not working today because it is Sunday.", vietnamese: "Hôm nay chúng tôi không làm việc vì là Chủ nhật." },
+          { english: "Are you preparing for the final English exam?", vietnamese: "Bạn đang chuẩn bị cho kỳ thi tiếng Anh cuối kỳ phải không?" },
           { english: "I am meeting my professor at 3 PM today.", vietnamese: "Tôi sẽ gặp giáo sư lúc 3 giờ chiều nay." }
         ]
       },
       {
-        id: "g-pc-2",
-        title: "2. Dấu hiệu nhận biết & lưu ý stative verbs",
-        explanation: "Dấu hiệu: now, right now, at the moment, Listen!, Look!, Be careful! Lưu ý: Các động từ trạng thái (love, hate, want, know, think, understand) không dùng ở thể tiếp diễn.",
-        formula: "Đúng: I want some water. (KHÔNG dùng: I am wanting some water)",
-        examples: [
-          { english: "Look! The bus is coming.", vietnamese: "Nhìn kìa! Xe buýt đang đến." },
-          { english: "I understand the grammar rule now.", vietnamese: "Bây giờ tôi đã hiểu quy tắc ngữ pháp này rồi." }
-        ]
+        id: "g-pc-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Các động từ chỉ trạng thái, cảm xúc và nhận thức (stative verbs) như love, hate, want, know, think, understand KHÔNG dùng ở thể tiếp diễn. Ví dụ: nói 'I want some water' chứ không bao giờ nói 'I am wanting some water'."
       }
     ],
     quizQuestions: [
@@ -244,23 +279,41 @@ let lessons = [
     grammarSections: [
       {
         id: "g-pp-1",
-        title: "1. Công thức & các trường hợp sử dụng",
-        explanation: "Diễn tả hành động xảy ra ở thời điểm không xác định trong quá khứ, hành động vừa mới hoàn thành hoặc trải nghiệm tính đến hiện tại.",
-        formula: "(+) S + have/has + V3/ed | (-) S + have/has + not + V3/ed | (?) Have/Has + S + V3/ed?",
-        examples: [
-          { english: "I have visited Tokyo twice.", vietnamese: "Tôi đã từng đến thăm Tokyo hai lần." },
-          { english: "She has just finished her master's thesis.", vietnamese: "Cô ấy vừa mới hoàn thiện luận văn thạc sĩ." }
-        ]
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Trong buổi học này, cô sẽ giúp các em nắm vững thì hiện tại hoàn thành (Present Perfect) - cầu nối ngữ pháp quan trọng giữa quá khứ và hiện tại khi nói về trải nghiệm hoặc kết quả công việc."
       },
       {
         id: "g-pp-2",
-        title: "2. Dấu hiệu SINCE & FOR",
-        explanation: "SINCE + mốc thời gian bắt đầu (since 2018, since last month). FOR + khoảng thời gian (for 5 years, for 3 hours).",
-        formula: "Since + Time Point (2020) | For + Time Period (2 years)",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Thì hiện tại hoàn thành diễn tả một hành động đã xảy ra ở thời điểm không xác định trong quá khứ, hoặc một hành động bắt đầu trong quá khứ kéo dài đến hiện tại, hoặc một sự việc vừa mới hoàn thành để lại kết quả."
+      },
+      {
+        id: "g-pp-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Các trạng từ phổ biến: just (vừa mới), already (đã... rồi), yet (chưa), ever (đã từng), never (chưa bao giờ), recently (gần đây), so far (cho đến nay); cùng bộ đôi quan trọng since và for.",
+        formula: "Chìa khóa: Since (mốc thời gian) / For (khoảng thời gian) / Just / Already / Yet / Ever / Never"
+      },
+      {
+        id: "g-pp-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Dùng trợ động từ have/has kết hợp với động từ ở dạng quá khứ phân từ (V3 hoặc V-ed).",
+        formula: "(+) Khẳng định: S + have/has + V3/ed\n(-) Phủ định: S + have/has + not + V3/ed\n(?) Nghi vấn: Have/Has + S + V3/ed?"
+      },
+      {
+        id: "g-pp-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Cùng phân tích các ví dụ đời thực sau:",
         examples: [
-          { english: "We have lived in this city since 2015.", vietnamese: "Chúng tôi đã sống ở thành phố này từ năm 2015." },
-          { english: "He has learned English for three years.", vietnamese: "Anh ấy đã học tiếng Anh được 3 năm." }
+          { english: "I have visited Tokyo three times.", vietnamese: "Tôi đã từng đến thăm Tokyo ba lần." },
+          { english: "She has not finished her monthly report yet.", vietnamese: "Cô ấy vẫn chưa hoàn thành báo cáo tháng của mình." },
+          { english: "Have you ever eaten Japanese sushi?", vietnamese: "Bạn đã từng ăn món sushi Nhật Bản bao giờ chưa?" },
+          { english: "We have lived in Hanoi since 2015.", vietnamese: "Chúng tôi đã sống ở Hà Nội từ năm 2015." }
         ]
+      },
+      {
+        id: "g-pp-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Phân biệt SINCE và FOR: Since + mốc thời gian bắt đầu (since 2020, since yesterday); For + khoảng thời gian (for 5 years, for 3 hours).\n• Nếu câu có mốc thời gian xác định hoàn toàn trong quá khứ (như yesterday, in 2010, 2 days ago), hãy dùng thì quá khứ đơn chứ không dùng hiện tại hoàn thành."
       }
     ],
     quizQuestions: [
@@ -286,13 +339,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-ppc-1",
-        title: "1. Công thức & Tính chất nhấn mạnh tính liên tục",
-        explanation: "Diễn tả hành động bắt đầu trong quá khứ, tiếp diễn liên tục không ngắt quãng đến hiện tại và có thể còn kéo dài tiếp.",
-        formula: "(+) S + have/has + been + V-ing | (-) S + have/has + not + been + V-ing",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Hôm nay cô trò chúng ta sẽ tìm hiểu thì hiện tại hoàn thành tiếp diễn (Present Perfect Continuous) - công cụ tuyệt vời để nhấn mạnh tính liên tục không ngừng nghỉ của một hành động."
+      },
+      {
+        id: "g-ppc-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Diễn tả quá trình kéo dài liên tục của một hành động bắt đầu từ quá khứ và vẫn đang tiếp tục diễn ra ở hiện tại, nhấn mạnh vào khoảng thời gian và tính liên tục."
+      },
+      {
+        id: "g-ppc-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Thường đi cùng các cụm từ nhấn mạnh thời gian: all day, all morning, for hours, for 3 days, since early morning, how long...",
+        formula: "Chìa khóa: All day / All morning / For hours / How long...?"
+      },
+      {
+        id: "g-ppc-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Cấu trúc kết hợp have/has + been + động từ thêm -ing.",
+        formula: "(+) Khẳng định: S + have/has + been + V-ing\n(-) Phủ định: S + have/has + not + been + V-ing\n(?) Nghi vấn: Have/Has + S + been + V-ing?"
+      },
+      {
+        id: "g-ppc-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Học các câu ví dụ thực tế giúp em nhớ lâu hơn:",
         examples: [
-          { english: "It has been raining for five hours non-stop.", vietnamese: "Trời đã mưa liên tục trong suốt 5 tiếng đồng hồ." },
-          { english: "I have been waiting for the bus since 7 AM.", vietnamese: "Tôi đã đứng chờ xe buýt liên tục từ 7 giờ sáng." }
+          { english: "It has been raining continuously all morning.", vietnamese: "Trời đã mưa liên tục suốt cả buổi sáng." },
+          { english: "He has not been sleeping well recently.", vietnamese: "Dạo gần đây anh ấy ngủ không được ngon giấc." },
+          { english: "How long have you been learning English?", vietnamese: "Bạn đã học tiếng Anh liên tục được bao lâu rồi?" }
         ]
+      },
+      {
+        id: "g-ppc-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• So sánh: Thì hiện tại hoàn thành đơn nhấn mạnh KẾT QUẢ hoặc SỐ LƯỢNG (ví dụ: I have written 3 emails), còn thì hiện tại hoàn thành tiếp diễn nhấn mạnh QUÁ TRÌNH LÀM VIỆC LÊN CẬN HẠN (ví dụ: I have been writing emails all morning)."
       }
     ],
     quizQuestions: [
@@ -318,13 +398,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-psimp-1",
-        title: "1. Công thức & cách dùng cho quá khứ kết thúc",
-        explanation: "Diễn tả hành động đã xảy ra và hoàn toàn kết thúc tại một thời điểm xác định trong quá khứ.",
-        formula: "(+) S + V2/ed | (-) S + did + not + V0 | (?) Did + S + V0?",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Bài học hôm nay cô sẽ hướng dẫn các em thì quá khứ đơn (Past Simple) - thì dùng nhiều nhất khi kể lại các sự kiện, câu chuyện đã hoàn tất trong quá khứ."
+      },
+      {
+        id: "g-psimp-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Thì quá khứ đơn dùng để diễn tả một hành động hay sự việc đã xảy ra và kết thúc hoàn toàn tại một thời điểm xác định trong quá khứ."
+      },
+      {
+        id: "g-psimp-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Các mốc thời gian đã qua: yesterday (hôm qua), last night / last week / last year, in 2020, 2 days ago, when I was young...",
+        formula: "Chìa khóa: Yesterday / Last week / Ago / In + năm quá khứ"
+      },
+      {
+        id: "g-psimp-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Động từ chia làm dạng có quy tắc (+ed) hoặc bất quy tắc (cột 2 V2). Trợ động từ phủ định/nghi vấn là 'did'.",
+        formula: "Động từ thường:\n(+) Khẳng định: S + V2/ed\n(-) Phủ định: S + did + not + V0\n(?) Nghi vấn: Did + S + V0?\n\nĐộng từ To Be:\n(+) Khẳng định: S + was/were + N/Adj\n(-) Phủ định: S + was/were + not + N/Adj\n(?) Nghi vấn: Was/Were + S + N/Adj?"
+      },
+      {
+        id: "g-psimp-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Dưới đây là ví dụ minh họa cụ thể:",
         examples: [
-          { english: "I graduated from university in 2021.", vietnamese: "Tôi đã tốt nghiệp đại học vào năm 2021." },
-          { english: "Did you watch the football match last night?", vietnamese: "Bạn có xem trận bóng đá tối qua không?" }
+          { english: "They moved to Ho Chi Minh City two years ago.", vietnamese: "Họ đã chuyển vào Thành phố Hồ Chí Minh cách đây hai năm." },
+          { english: "I did not receive your email yesterday.", vietnamese: "Tôi đã không nhận được email của bạn vào ngày hôm qua." },
+          { english: "Did you watch the football match last night?", vietnamese: "Tối qua bạn có xem trận thi đấu bóng đá không?" }
         ]
+      },
+      {
+        id: "g-psimp-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Nhớ học thuộc các động từ bất quy tắc phổ biến (go -> went, buy -> bought, see -> saw, take -> took).\n• Khi đã dùng trợ động từ 'did' hoặc 'didn't' trong câu phủ định hay nghi vấn, động từ chính luôn trở về dạng nguyên thể V0."
       }
     ],
     quizQuestions: [
@@ -350,13 +457,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-pcont-1",
-        title: "1. Công thức & thời điểm cụ thể trong quá khứ",
-        explanation: "Diễn tả hành động đang xảy ra tại một giờ chính xác trong quá khứ.",
-        formula: "(+) S + was/were + V-ing | (-) S + was/were + not + V-ing | (?) Was/Were + S + V-ing?",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Trong bài học này, cô trò mình cùng nghiên cứu thì quá khứ tiếp diễn (Past Continuous) để mô tả những hành động đang diễn ra tại một mốc thời điểm cụ thể ở quá khứ."
+      },
+      {
+        id: "g-pcont-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Diễn tả hành động đang xảy ra tại một thời điểm chính xác trong quá khứ, hoặc hai hành động diễn ra song song cùng lúc, hoặc một hành động đang diễn ra thì hành động khác cắt ngang."
+      },
+      {
+        id: "g-pcont-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Thường có mốc giờ cụ thể ở quá khứ (at 8 PM yesterday, at this time last week); hoặc đi kèm các từ nối khi phối hợp mệnh đề như when, while.",
+        formula: "Chìa khóa: At + giờ + quá khứ / At this time last week / When / While"
+      },
+      {
+        id: "g-pcont-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Chia động từ to be ở quá khứ (was cho chủ ngữ số ít, were cho chủ ngữ số nhiều) đi với V-ing.",
+        formula: "(+) Khẳng định: S + was/were + V-ing\n(-) Phủ định: S + was/were + not + V-ing\n(?) Nghi vấn: Was/Were + S + V-ing?"
+      },
+      {
+        id: "g-pcont-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Quan sát các câu ví dụ mẫu dưới đây:",
         examples: [
-          { english: "At 9 PM last night, I was studying in the library.", vietnamese: "Vào lúc 9 giờ tối qua, tôi đang học trong thư viện." },
-          { english: "What were you doing at this time yesterday?", vietnamese: "Bạn đang làm gì vào giờ này ngày hôm qua?" }
+          { english: "At 8 PM yesterday, I was studying in my room.", vietnamese: "Vào lúc 8 giờ tối qua, tôi đang học bài trong phòng." },
+          { english: "She was not paying attention while the teacher was explaining.", vietnamese: "Cô ấy đã không chú ý khi cô giáo đang giảng bài." },
+          { english: "What were you doing when the phone rang?", vietnamese: "Bạn đang làm gì khi điện thoại reo?" }
         ]
+      },
+      {
+        id: "g-pcont-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Ghi nhớ quy tắc phối hợp: Hành động đang diễn ra (dài hơn) chia quá khứ tiếp diễn (was/were V-ing), hành động chen ngang (ngắn hơn) chia quá khứ đơn (V2/ed)."
       }
     ],
     quizQuestions: [
@@ -382,13 +516,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-pastperf-1",
-        title: "1. Cấu trúc & quy tắc 'Hành động xảy ra trước trong quá khứ'",
-        explanation: "Khi có hai hành động cùng xảy ra trong quá khứ: Hành động nào xảy ra TRƯỚC -> Dùng quá khứ hoàn thành. Hành động xảy ra SAU -> Dùng quá khứ đơn.",
-        formula: "(+) S + had + V3/ed | (-) S + had + not + V3/ed | (?) Had + S + V3/ed?",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Bài học hôm nay cô sẽ giải thích thì quá khứ hoàn thành (Past Perfect) - được coi là 'quá khứ của quá khứ', giúp các em xác định rõ thứ tự trước sau của các sự việc."
+      },
+      {
+        id: "g-pastperf-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Thì quá khứ hoàn thành dùng để diễn tả một hành động đã xảy ra và hoàn tất TRƯỚC một hành động khác hoặc một mốc thời gian khác trong quá khứ."
+      },
+      {
+        id: "g-pastperf-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Thường xuất hiện cùng các từ nối: before (trước khi), after (sau khi), by the time (vào lúc), by 2018...",
+        formula: "Chìa khóa: Before / After / By the time / By + mốc thời gian quá khứ"
+      },
+      {
+        id: "g-pastperf-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Cấu trúc gồm trợ động từ HAD đi cùng động từ dạng phân từ 2 (V3/ed).",
+        formula: "(+) Khẳng định: S + had + V3/ed\n(-) Phủ định: S + had + not + V3/ed\n(?) Nghi vấn: Had + S + V3/ed?"
+      },
+      {
+        id: "g-pastperf-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Cùng tham khảo các ví dụ chuẩn dưới đây:",
         examples: [
-          { english: "By the time the police arrived, the thief had escaped.", vietnamese: "Vào lúc cảnh sát đến nơi thì tên trộm đã tẩu thoát rồi." },
-          { english: "She had eaten dinner before her friends called.", vietnamese: "Cô ấy đã ăn tối trước khi các bạn cô ấy gọi điện." }
+          { english: "By the time the train arrived, we had bought all the tickets.", vietnamese: "Vào lúc tàu đến, chúng tôi đã mua xong toàn bộ vé rồi." },
+          { english: "She had not finished dinner when her friends called.", vietnamese: "Cô ấy vẫn chưa ăn xong bữa tối khi các bạn gọi điện." },
+          { english: "Had you studied English before you moved to London?", vietnamese: "Bạn đã học tiếng Anh trước khi chuyển sang London sống chưa?" }
         ]
+      },
+      {
+        id: "g-pastperf-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Mẹo nhớ đơn giản: Trong quá khứ, hành động nào xảy ra TRƯỚC thì chia Quá khứ hoàn thành (had + V3), hành động nào xảy ra SAU chia Quá khứ đơn (V2/ed)."
       }
     ],
     quizQuestions: [
@@ -414,12 +575,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-ppc2-1",
-        title: "1. Công thức & nhấn mạnh quá trình quá khứ",
-        explanation: "Nhấn mạnh khoảng thời gian kéo dài liên tục trước khi một sự việc khác xảy ra trong quá khứ.",
-        formula: "(+) S + had + been + V-ing | (-) S + had + not + been + V-ing",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Cô xin giới thiệu thì quá khứ hoàn thành tiếp diễn (Past Perfect Continuous) - thì giúp biểu thị một hành động kéo dài liên tục trước một thời điểm quá khứ."
+      },
+      {
+        id: "g-ppc2-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Diễn tả quá trình kéo dài liên tục của một hành động bắt đầu trước và tiếp diễn cho đến một thời điểm hoặc một hành động khác trong quá khứ."
+      },
+      {
+        id: "g-ppc2-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Các cụm từ hay gặp: until then, by the time, for 2 hours before, how long...",
+        formula: "Chìa khóa: Until then / For + khoảng thời gian + before..."
+      },
+      {
+        id: "g-ppc2-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Cấu trúc gồm S + had + been + V-ing.",
+        formula: "(+) Khẳng định: S + had + been + V-ing\n(-) Phủ định: S + had + not + been + V-ing\n(?) Nghi vấn: Had + S + been + V-ing?"
+      },
+      {
+        id: "g-ppc2-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Dưới đây là các ví dụ minh họa:",
         examples: [
-          { english: "They had been driving for 6 hours before they found a gas station.", vietnamese: "Họ đã lái xe liên tục 6 tiếng trước khi tìm thấy một cây xăng." }
+          { english: "They had been driving for 6 hours before they found a gas station.", vietnamese: "Họ đã lái xe liên tục 6 tiếng trước khi tìm thấy một cây xăng." },
+          { english: "I had not been working there for long when the company closed.", vietnamese: "Tôi làm việc ở đó chưa được bao lâu thì công ty đóng cửa." },
+          { english: "Had she been living in Paris before she moved to Rome?", vietnamese: "Có phải cô ấy đã sống liên tục ở Paris trước khi chuyển tới Rome không?" }
         ]
+      },
+      {
+        id: "g-ppc2-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Thì này tập trung nhấn mạnh tính liên tục và nguyên nhân để lại hậu quả ở một thời điểm trong quá khứ."
       }
     ],
     quizQuestions: [
@@ -445,13 +634,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-futsim-1",
-        title: "1. Công thức & quyết định ngay lúc nói",
-        explanation: "Đưa ra quyết định tức thì, không có kế hoạch tính toán trước.",
-        formula: "(+) S + will + V0 | (-) S + will not (won't) + V0 | (?) Will + S + V0?",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Hôm nay cô trò mình cùng tìm hiểu thì tương lai đơn (Future Simple) để đưa ra quyết định bộc phát, lời hứa hoặc dự đoán tương lai."
+      },
+      {
+        id: "g-futsim-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Thì tương lai đơn diễn tả một quyết định bộc phát được đưa ra ngay tại thời điểm nói, hoặc một lời hứa, đề nghị giúp đỡ, dự đoán không có căn cứ cụ thể."
+      },
+      {
+        id: "g-futsim-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Các từ nhận biết: tomorrow (ngày mai), next week / next month, in the future, soon; hoặc đứng sau các từ think, believe, promise, hope.",
+        formula: "Chìa khóa: Tomorrow / Next week / I think / I promise / Soon"
+      },
+      {
+        id: "g-futsim-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Sử dụng trợ động từ WILL đi cùng động từ nguyên thể V0.",
+        formula: "(+) Khẳng định: S + will + V0\n(-) Phủ định: S + will not (won't) + V0\n(?) Nghi vấn: Will + S + V0?"
+      },
+      {
+        id: "g-futsim-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Hãy học qua các ví dụ thực tế dưới đây:",
         examples: [
-          { english: "Hold on! I will open the door for you.", vietnamese: "Chờ chút! Tôi sẽ mở cửa giúp bạn." },
-          { english: "I promise I will not be late tomorrow.", vietnamese: "Tôi hứa ngày mai tôi sẽ không đến muộn." }
+          { english: "Don't worry, I will help you with your homework.", vietnamese: "Đừng lo, cô sẽ giúp em làm bài tập về nhà." },
+          { english: "I promise I will not be late again.", vietnamese: "Em hứa em sẽ không đi học muộn nữa." },
+          { english: "Will you attend the company party tomorrow?", vietnamese: "Bạn sẽ tham dự buổi tiệc của công ty ngày mai chứ?" }
         ]
+      },
+      {
+        id: "g-futsim-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Phân biệt với 'be going to': 'will' dùng cho quyết định bộc phát ngẫu nhiên lúc nói, còn 'be going to' dùng cho kế hoạch đã dự định và chuẩn bị từ trước."
       }
     ],
     quizQuestions: [
@@ -477,12 +693,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-futcont-1",
-        title: "1. Công thức & mốc thời gian cụ thể ở tương lai",
-        explanation: "Nhấn mạnh hành động đang diễn ra tại một giờ cụ thể trong tương lai.",
-        formula: "(+) S + will + be + V-ing | (-) S + will not + be + V-ing",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Bài học này cô sẽ hướng dẫn các em thì tương lai tiếp diễn (Future Continuous) để mô tả những sự việc đang diễn ra ở một mốc thời gian tương lai."
+      },
+      {
+        id: "g-futcont-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Diễn tả hành động đang diễn ra tại một mốc thời điểm cụ thể hoặc một khoảng thời gian xác định trong tương lai."
+      },
+      {
+        id: "g-futcont-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Có mốc giờ cụ thể ở tương lai: at 9 AM tomorrow, at this time next week, during this summer...",
+        formula: "Chìa khóa: At + giờ + mốc tương lai / At this time next week"
+      },
+      {
+        id: "g-futcont-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Bắt buộc gồm WILL + BE + V-ing.",
+        formula: "(+) Khẳng định: S + will + be + V-ing\n(-) Phủ định: S + will not + be + V-ing\n(?) Nghi vấn: Will + S + be + V-ing?"
+      },
+      {
+        id: "g-futcont-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Cùng đọc các ví dụ sau:",
         examples: [
-          { english: "At 10 AM tomorrow, I will be taking my final exam.", vietnamese: "Vào lúc 10 giờ sáng mai, tôi đang làm bài thi học kỳ." }
+          { english: "At 9 AM tomorrow, I will be taking my English exam.", vietnamese: "Vào lúc 9 giờ sáng mai, cô sẽ đang làm bài thi tiếng Anh." },
+          { english: "They will not be working this time next week.", vietnamese: "Thời điểm này tuần sau họ sẽ không làm việc." },
+          { english: "Will you be using your laptop tonight?", vietnamese: "Tối nay bạn có đang dùng máy tính xách tay không?" }
         ]
+      },
+      {
+        id: "g-futcont-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Luôn ghi nhớ cấu trúc bắt buộc phải có từ 'be' ở giữa 'will' và 'V-ing' (will be V-ing)."
       }
     ],
     quizQuestions: [
@@ -508,12 +752,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-futperf-1",
-        title: "1. Cấu trúc & quy tắc 'Hoàn thành trước mốc tương lai'",
-        explanation: "Thường đi kèm với cụm 'By...' (By 2030, By next month, By the time you arrive).",
-        formula: "(+) S + will + have + V3/ed | (-) S + will not + have + V3/ed",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Trong bài học hôm nay, cô sẽ giúp các em làm chủ thì tương lai hoàn thành (Future Perfect) để nói về những cột mốc hoàn thành công việc trong tương lai."
+      },
+      {
+        id: "g-futperf-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Thì tương lai hoàn thành dùng để diễn tả một hành động sẽ hoàn tất trước một mốc thời gian hoặc trước một hành động khác trong tương lai."
+      },
+      {
+        id: "g-futperf-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Cụm từ bắt đầu bằng 'By': by next month, by 2030, by the time you come back, by Friday...",
+        formula: "Chìa khóa: By + mốc thời gian tương lai / By the time + mệnh đề hiện tại đơn"
+      },
+      {
+        id: "g-futperf-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Sử dụng WILL HAVE đi cùng V3/ed.",
+        formula: "(+) Khẳng định: S + will + have + V3/ed\n(-) Phủ định: S + will not + have + V3/ed\n(?) Nghi vấn: Will + S + have + V3/ed?"
+      },
+      {
+        id: "g-futperf-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Tham khảo các ví dụ thực tiễn dưới đây:",
         examples: [
-          { english: "By December, we will have finished the building construction.", vietnamese: "Cho đến trước tháng 12, chúng tôi sẽ hoàn thành xong việc xây dựng tòa nhà này." }
+          { english: "By the end of this year, I will have finished my bachelor degree.", vietnamese: "Tính đến cuối năm nay, cô sẽ hoàn thành xong bằng cử nhân của mình." },
+          { english: "He will not have completed the construction by next Monday.", vietnamese: "Anh ấy sẽ chưa hoàn thành xong công trình trước thứ Hai tuần sau." },
+          { english: "Will you have built the new website by tomorrow morning?", vietnamese: "Liệu bạn có hoàn thành trang web mới trước sáng mai không?" }
         ]
+      },
+      {
+        id: "g-futperf-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Mệnh đề chỉ thời gian đứng sau 'by the time' chia ở thì hiện tại đơn, còn mệnh đề chính chứa kết quả hoàn thành chia ở thì tương lai hoàn thành."
       }
     ],
     quizQuestions: [
@@ -539,12 +811,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-futpc-1",
-        title: "1. Công thức & tính thời lượng tương lai",
-        explanation: "Diễn tả tính liên tục kéo dài tính đến mốc thời gian tương lai.",
-        formula: "(+) S + will + have + been + V-ing",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Bài học này cô trò mình sẽ chinh phục thì tương lai hoàn thành tiếp diễn (Future Perfect Continuous) - thì nâng cao để nhấn mạnh thời lượng kéo dài tính tới mốc tương lai."
+      },
+      {
+        id: "g-futpc-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Diễn tả một hành động bắt đầu từ quá khứ hoặc hiện tại và kéo dài liên tục cho đến một thời điểm nhất định trong tương lai."
+      },
+      {
+        id: "g-futpc-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Các cụm phối hợp: by the time..., by next year... for 10 years, how long...",
+        formula: "Chìa khóa: By... for + khoảng thời gian"
+      },
+      {
+        id: "g-futpc-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Sử dụng WILL HAVE BEEN V-ing.",
+        formula: "(+) Khẳng định: S + will + have + been + V-ing\n(-) Phủ định: S + will not + have + been + V-ing\n(?) Nghi vấn: Will + S + have + been + V-ing?"
+      },
+      {
+        id: "g-futpc-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Dưới đây là các ví dụ minh họa:",
         examples: [
-          { english: "By next month, I will have been living in San Francisco for 10 years.", vietnamese: "Tính đến tháng sau, tôi sẽ sống liên tục ở San Francisco tròn 10 năm." }
+          { english: "By next month, I will have been teaching English here for ten years.", vietnamese: "Tính đến tháng sau, cô sẽ dạy học tiếng Anh ở đây liên tục được 10 năm." },
+          { english: "They will not have been working together for long by then.", vietnamese: "Họ sẽ làm việc cùng nhau chưa lâu tính đến lúc đó." },
+          { english: "How long will you have been living in this city by 2028?", vietnamese: "Bạn sẽ sống ở thành phố này liên tục được bao lâu tính đến năm 2028?" }
         ]
+      },
+      {
+        id: "g-futpc-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Thì này chú trọng vào con số thời gian kéo dài (thời lượng) của quá trình."
       }
     ],
     quizQuestions: [
@@ -572,13 +872,41 @@ let lessons = [
     grammarSections: [
       {
         id: "g-comp-1",
-        title: "1. So sánh cốt lõi: Quá khứ đơn vs Hiện tại hoàn thành",
-        explanation: "• Quá khứ đơn: Thời gian XÁC ĐỊNH (yesterday, last year, in 2020) & Hành động ĐÃ KẾT THÚC HOÀN TOÀN.\n• Hiện tại hoàn thành: Thời gian KHÔNG XÁC ĐỊNH hoặc kéo dài tới hiện tại (for, since, ever, never).",
-        formula: "Past Simple: S + V2/ed + time_in_past | Present Perfect: S + have/has + V3/ed (+ since/for)",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Trong bài học tổng hợp này, cô sẽ giúp các em phân biệt triệt để hai thì dễ nhầm lẫn nhất trong tiếng Anh: Thì hiện tại hoàn thành và Thì quá khứ đơn."
+      },
+      {
+        id: "g-comp-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Quá khứ đơn dùng cho hành động có thời gian XÁC ĐỊNH và đã KẾT THÚC hoàn toàn trong quá khứ. Hiện tại hoàn thành dùng cho hành động KHÔNG XÁC ĐỊNH thời gian hoặc còn kéo dài / ảnh hưởng tới hiện tại."
+      },
+      {
+        id: "g-comp-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "• Quá khứ đơn: yesterday, ago, last year, in 2010.\n• Hiện tại hoàn thành: since, for, ever, never, just, already, so far.",
+        formula: "Quá khứ đơn: Mốc thời gian xác định | Hiện tại hoàn thành: Thời gian không xác định / Since / For"
+      },
+      {
+        id: "g-comp-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "So sánh công thức trực quan giữa hai thì:",
+        formula: "Quá khứ đơn: S + V2/ed | S + did not + V0 | Did + S + V0?\nHiện tại hoàn thành: S + have/has + V3/ed | S + have/has not + V3/ed | Have/Has + S + V3/ed?"
+      },
+      {
+        id: "g-comp-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "So sánh hai câu ví dụ để thấy rõ sự khác biệt ngữ nghĩa:",
         examples: [
-          { english: "I lost my keys yesterday. (I got them back or it happened yesterday).", vietnamese: "Tôi đã mất chìa khóa hôm qua (thời gian xác định)." },
-          { english: "I have lost my keys! (I still don't have them right now).", vietnamese: "Tôi bị mất chìa khóa rồi! (kết quả là hiện tại tôi vẫn không có chìa khóa)." }
+          { english: "I lost my keys yesterday.", vietnamese: "Tôi đã làm mất chìa khóa hôm qua (thời gian xác định)." },
+          { english: "I have lost my keys.", vietnamese: "Tôi đã làm mất chìa khóa rồi (hiện tại tôi vẫn chưa tìm thấy)." },
+          { english: "She did not call me last night.", vietnamese: "Tối qua cô ấy không gọi cho tôi." },
+          { english: "She has not called me yet.", vietnamese: "Cô ấy vẫn chưa gọi cho tôi." }
         ]
+      },
+      {
+        id: "g-comp-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Khi nhìn thấy các từ chỉ thời gian quá khứ cụ thể như 'yesterday', 'last night' hay 'in 2022', lập tức chọn thì quá khứ đơn!"
       }
     ],
     quizQuestions: [
@@ -604,12 +932,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-comp2-1",
-        title: "1. Bản chất cố định vs Tạm thời",
-        explanation: "• Hiện tại đơn: Thói quen, sự thật, lịch trình cố định.\n• Hiện tại tiếp diễn: Sự việc tạm thời chỉ diễn ra dạo này hoặc ngay bây giờ.",
-        formula: "Present Simple: S + V(s/es) | Present Continuous: S + am/is/are + V-ing",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Bài học này cô sẽ giúp các em so sánh và làm rõ sự khác biệt giữa Thì hiện tại đơn và Thì hiện tại tiếp diễn."
+      },
+      {
+        id: "g-comp2-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Hiện tại đơn diễn tả bản chất cố định, thói quen hằng ngày và sự thật hiển nhiên. Hiện tại tiếp diễn diễn tả sự việc tạm thời hoặc hành động đang diễn ra ngay lúc nói."
+      },
+      {
+        id: "g-comp2-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Hiện tại đơn đi với always, usually, every day. Hiện tại tiếp diễn đi với now, right now, at the moment, Look!, Listen!",
+        formula: "Hiện tại đơn: Always / Every day | Hiện tại tiếp diễn: Now / At the moment / Look!"
+      },
+      {
+        id: "g-comp2-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Cấu trúc hai thì khác biệt rõ rệt ở động từ:",
+        formula: "Hiện tại đơn: S + V(s/es) | S + do/does + not + V0\nHHiện tại tiếp diễn: S + am/is/are + V-ing"
+      },
+      {
+        id: "g-comp2-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Cùng phân tích ví dụ đối chiếu:",
         examples: [
-          { english: "He usually drives to work, but today he is taking the bus.", vietnamese: "Anh ấy thường lái xe đi làm (thói quen), nhưng hôm nay anh ấy đi xe buýt (tạm thời)." }
+          { english: "I usually drink tea, but today I am drinking coffee.", vietnamese: "Tôi thường uống trà, nhưng hôm nay tôi đang uống cà phê." },
+          { english: "He does not work on Saturdays.", vietnamese: "Anh ấy không làm việc vào các ngày thứ Bảy." },
+          { english: "He is not working right now.", vietnamese: "Ngay lúc này anh ấy đang không làm việc." }
         ]
+      },
+      {
+        id: "g-comp2-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Đặc biệt ghi nhớ các động từ chỉ cảm xúc và nhận thức (know, understand, love, want) luôn chia ở thì hiện tại đơn."
       }
     ],
     quizQuestions: [
@@ -635,13 +991,40 @@ let lessons = [
     grammarSections: [
       {
         id: "g-comp3-1",
-        title: "1. Quy tắc WHEN và WHILE",
-        explanation: "• WHEN + Quá Khứ Đơn (Hành động cắt ngang ngắn).\n• WHILE + Quá Khứ Tiếp Diễn (Hành động đang diễn ra kéo dài dài hơn).",
-        formula: "When + Past Simple, Past Continuous | While + Past Continuous, Past Simple",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Cô trò chúng ta cùng xử lý dạng bài tập kết hợp giữa Thì quá khứ đơn và Thì quá khứ tiếp diễn với liên từ When và While."
+      },
+      {
+        id: "g-comp3-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "Sử dụng phối hợp khi một hành động đang diễn ra trong quá khứ (dài hơn) thì bị một hành động khác bất ngờ chen ngang (ngắn hơn)."
+      },
+      {
+        id: "g-comp3-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Liên từ 'When' (thường đi với quá khứ đơn) và 'While' (thường đi với quá khứ tiếp diễn).",
+        formula: "When + S + V2/ed | While + S + was/were + V-ing"
+      },
+      {
+        id: "g-comp3-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Mô hình phối hợp thì quen thuộc trong đề thi:",
+        formula: "While + S + was/were + V-ing, S + V2/ed\nS + was/were + V-ing + when + S + V2/ed"
+      },
+      {
+        id: "g-comp3-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Cùng xem các câu ví dụ mẫu:",
         examples: [
-          { english: "When the phone rang, I was taking a shower.", vietnamese: "Khi chuông điện thoại reo (ngắn), tôi đang tắm (kéo dài)." },
-          { english: "While we were having a picnic, it started to rain.", vietnamese: "Trong khi chúng tôi đang đi dã ngoại, trời bắt đầu đổ mưa." }
+          { english: "While I was driving home, it started to rain heavily.", vietnamese: "Trong khi tôi đang lái xe về nhà thì trời bắt đầu mưa to." },
+          { english: "She was cooking dinner when her husband came home.", vietnamese: "Cô ấy đang nấu bữa tối thì chồng cô ấy về tới nhà." },
+          { english: "What were you doing when the power went out?", vietnamese: "Bạn đang làm gì khi bị cúp điện?" }
         ]
+      },
+      {
+        id: "g-comp3-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Khi hai hành động diễn ra song song cùng lúc trong quá khứ, chia cả hai mệnh đề ở quá khứ tiếp diễn (ví dụ: While I was reading, my brother was playing games)."
       }
     ],
     quizQuestions: [
@@ -667,12 +1050,41 @@ let lessons = [
     grammarSections: [
       {
         id: "g-m12-1",
-        title: "1. Ma trận 3 x 4 của 12 thì tiếng Anh",
-        explanation: "12 thì hình thành bằng cách kết hợp 3 Khung Thời Gian (Hiện tại - Quá khứ - Tương lai) với 4 Thể (Đơn - Tiếp diễn - Hoàn thành - Hoàn thành tiếp diễn).\n• Đơn: Sự việc nói chung / thói quen\n• Tiếp diễn: Đang diễn ra\n• Hoàn thành: Đã xong trước một mốc\n• Hoàn thành tiếp diễn: Quá trình kéo dài liên tục",
-        formula: "3 Mốc x 4 Thể = 12 Thì Chuẩn CEFR",
+        title: "1. Mục tiêu bài học",
+        explanation: "Chào các em! Bài học này cô tổng hợp toàn bộ 12 thì trong tiếng Anh thành ma trận 3x4 dễ nhớ, giúp các em không bao giờ bị rối hay nhầm lẫn thì nữa."
+      },
+      {
+        id: "g-m12-2",
+        title: "2. Khái niệm & bản chất",
+        explanation: "12 thì được tạo nên từ 3 mốc thời gian (Hiện tại - Quá khứ - Tương lai) kết hợp với 4 thể (Đơn - Tiếp diễn - Hoàn thành - Hoàn thành tiếp diễn)."
+      },
+      {
+        id: "g-m12-3",
+        title: "3. Dấu hiệu nhận biết",
+        explanation: "Nhận biết qua các từ chìa khóa đặc trưng đại diện cho 4 thể:",
+        formula: "Đơn: thói quen/sự thật | Tiếp diễn: đang xảy ra | Hoàn thành: đã xong trước 1 mốc | Hoàn thành tiếp diễn: thời lượng kéo dài"
+      },
+      {
+        id: "g-m12-4",
+        title: "4. Công thức & cách dùng chi tiết",
+        explanation: "Quy tắc nhẩm nhanh công thức 4 thể:",
+        formula: "• Đơn: V0 / V(s/es) / V2/ed / will V0\n• Tiếp diễn: be + V-ing\n• Hoàn thành: have/has/had/will have + V3/ed\n• Hoàn thành tiếp diễn: have/has/had/will have + been + V-ing"
+      },
+      {
+        id: "g-m12-5",
+        title: "5. Ví dụ minh họa thực tế",
+        explanation: "Ví dụ chuỗi câu đại diện:",
         examples: [
-          { english: "Present Simple: I work | Past Simple: I worked | Future Simple: I will work", vietnamese: "Hiện tại đơn - Quá khứ đơn - Tương lai đơn" }
+          { english: "I study English every day. (Present Simple)", vietnamese: "Tôi học tiếng Anh mỗi ngày (Hiện tại đơn)." },
+          { english: "I studied English yesterday. (Past Simple)", vietnamese: "Tôi đã học tiếng Anh ngày hôm qua (Quá khứ đơn)." },
+          { english: "I will study English tomorrow. (Future Simple)", vietnamese: "Tôi sẽ học tiếng Anh ngày mai (Tương lai đơn)." },
+          { english: "I have studied English for 3 years. (Present Perfect)", vietnamese: "Tôi đã học tiếng Anh được 3 năm (Hiện tại hoàn thành)." }
         ]
+      },
+      {
+        id: "g-m12-6",
+        title: "6. Lưu ý nhỏ & mẹo tránh lỗi sai",
+        explanation: "• Nắm vững bản chất của 4 thể giúp em suy ra công thức của bất kỳ thì nào mà không cần học vẹt."
       }
     ],
     quizQuestions: [
@@ -738,6 +1150,385 @@ let lessons = [
         question: "Alex's main strength is solving complex problems efficiently under tight _____.",
         correctAnswer: "deadlines",
         explanation: "Từ cần điền là 'deadlines' (hạn chót).",
+      },
+    ],
+  },
+
+  {
+    id: "listening-airport",
+    title: "Luyện nghe: Thủ tục check-in tại sân bay (Airport Check-in)",
+    category: "listening",
+    level: "A1",
+    description: "Luyện nghe hội thoại làm thủ tục bay, chọn chỗ ngồi và gửi hành lý tại quầy hàng không.",
+    durationMinutes: 12,
+    imageUrl: "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=600&q=80",
+    createdAt: new Date().toISOString(),
+    listeningScript: {
+      title: "Hội thoại check-in tại quầy vé sân bay",
+      topic: "Airport & Travel",
+      fullText: "Agent: Good morning! Welcome to Sky Airways. May I see your passport and booking reference?\nPassenger: Good morning! Here is my passport and reservation code.\nAgent: Thank you. Would you prefer a window seat or an aisle seat today?\nPassenger: An aisle seat, please. Also, I have one suitcase to check in.\nAgent: Perfect. Here is your boarding pass. Gate 12, boarding starts at 2:30 PM.",
+      lines: [
+        {
+          speaker: "Agent",
+          english: "Good morning! Welcome to Sky Airways. May I see your passport and booking reference?",
+          vietnamese: "Xin chào quý khách! Chào mừng đến với Sky Airways. Cho tôi xem hộ chiếu và mã đặt vé của bạn được không?",
+        },
+        {
+          speaker: "Passenger",
+          english: "Good morning! Here is my passport and reservation code.",
+          vietnamese: "Chào cô! Đây là hộ chiếu và mã đặt chỗ của tôi.",
+        },
+        {
+          speaker: "Agent",
+          english: "Thank you. Would you prefer a window seat or an aisle seat today?",
+          vietnamese: "Cảm ơn quý khách. Hôm nay bạn muốn chọn ghế cạnh cửa sổ hay ghế cạnh lối đi?",
+        },
+        {
+          speaker: "Passenger",
+          english: "An aisle seat, please. Also, I have one suitcase to check in.",
+          vietnamese: "Cho tôi ghế cạnh lối đi nhé. Ngoài ra, tôi có một vali cần ký gửi.",
+        },
+        {
+          speaker: "Agent",
+          english: "Perfect. Here is your boarding pass. Gate 12, boarding starts at 2:30 PM.",
+          vietnamese: "Hoàn hảo. Đây là thẻ lên máy bay của bạn. Cổng số 12, giờ lên máy bay bắt đầu lúc 2 giờ 30 phút chiều.",
+        },
+      ],
+    },
+    quizQuestions: [
+      {
+        id: "q-air-1",
+        type: "multiple-choice",
+        question: "What type of seat did the passenger choose?",
+        options: ["Window seat", "Aisle seat", "Middle seat", "Extra legroom"],
+        correctAnswer: "Aisle seat",
+        explanation: "Hành khách yêu cầu: 'An aisle seat, please' (ghế cạnh lối đi).",
+      },
+      {
+        id: "q-air-2",
+        type: "multiple-choice",
+        question: "What gate is the flight boarding at?",
+        options: ["Gate 8", "Gate 10", "Gate 12", "Gate 14"],
+        correctAnswer: "Gate 12",
+        explanation: "Nhân viên thông báo: 'Gate 12, boarding starts at 2:30 PM'.",
+      }
+    ],
+  },
+
+  {
+    id: "listening-restaurant",
+    title: "Luyện nghe: Đặt món tại nhà hàng (Ordering Food at a Restaurant)",
+    category: "listening",
+    level: "A2",
+    description: "Luyện nghe giao tiếp với bồi bàn, hỏi thực đơn, gọi món ăn đặc biệt và gọi nước uống.",
+    durationMinutes: 15,
+    imageUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    createdAt: new Date().toISOString(),
+    listeningScript: {
+      title: "Hội thoại gọi món ăn tại nhà hàng phương Tây",
+      topic: "Dining & Restaurant",
+      fullText: "Waiter: Good evening! Are you ready to order, or do you need a few more minutes?\nCustomer: We are ready, thank you. What is the chef's special today?\nWaiter: Today's special is grilled salmon with garlic butter sauce and roasted vegetables.\nCustomer: That sounds delicious! I will have the salmon, and a glass of fresh orange juice.\nWaiter: Excellent choice! I will bring your drink right away.",
+      lines: [
+        {
+          speaker: "Waiter",
+          english: "Good evening! Are you ready to order, or do you need a few more minutes?",
+          vietnamese: "Chào buổi tối quý khách! Bạn đã sẵn sàng gọi món chưa, hay cần thêm vài phút?",
+        },
+        {
+          speaker: "Customer",
+          english: "We are ready, thank you. What is the chef's special today?",
+          vietnamese: "Chúng tôi sẵn sàng rồi, cảm ơn anh. Món đặc biệt của đầu bếp hôm nay là gì vậy?",
+        },
+        {
+          speaker: "Waiter",
+          english: "Today's special is grilled salmon with garlic butter sauce and roasted vegetables.",
+          vietnamese: "Món đặc biệt hôm nay là cá hồi nướng sốt bơ tỏi ăn kèm rau củ nướng.",
+        },
+        {
+          speaker: "Customer",
+          english: "That sounds delicious! I will have the salmon, and a glass of fresh orange juice.",
+          vietnamese: "Nghe hấp dẫn quá! Cho tôi một phần cá hồi và một ly nước cam tươi nhé.",
+        },
+        {
+          speaker: "Waiter",
+          english: "Excellent choice! I will bring your drink right away.",
+          vietnamese: "Lựa chọn tuyệt vời! Tôi sẽ mang đồ uống lên cho bạn ngay lập tức.",
+        },
+      ],
+    },
+    quizQuestions: [
+      {
+        id: "q-rest-1",
+        type: "multiple-choice",
+        question: "What is the chef's special dish today?",
+        options: ["Grilled chicken", "Beef steak", "Grilled salmon", "Seafood pasta"],
+        correctAnswer: "Grilled salmon",
+        explanation: "Bồi bàn giới thiệu món đặc biệt là 'grilled salmon with garlic butter sauce'.",
+      },
+    ],
+  },
+
+  {
+    id: "listening-shopping",
+    title: "Luyện nghe: Mua sắm & hỏi giảm giá (Shopping & Discounts)",
+    category: "listening",
+    level: "A2",
+    description: "Luyện nghe tình huống tìm mua trang phục, chọn kích cỡ chuẩn và hỏi chương trình khuyến mãi.",
+    durationMinutes: 14,
+    imageUrl: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80",
+    createdAt: new Date().toISOString(),
+    listeningScript: {
+      title: "Hội thoại mua sắm tại cửa hàng thời trang",
+      topic: "Shopping & Fashion",
+      fullText: "Salesperson: Hi there! Can I help you find a specific size or color for this jacket?\nShopper: Yes, please. Do you have this blue denim jacket in medium?\nSalesperson: Let me check our stock... Yes, here is a medium for you to try on.\nShopper: It fits perfectly! Is there any discount on this item today?\nSalesperson: If you pay by card today, you get an extra 10% discount at checkout.",
+      lines: [
+        {
+          speaker: "Salesperson",
+          english: "Hi there! Can I help you find a specific size or color for this jacket?",
+          vietnamese: "Xin chào! Tôi có thể giúp bạn tìm kích cỡ hay màu sắc cụ thể cho chiếc áo khoác này không?",
+        },
+        {
+          speaker: "Shopper",
+          english: "Yes, please. Do you have this blue denim jacket in medium?",
+          vietnamese: "Dạ có. Bạn có chiếc áo khoác bò màu xanh này size M không?",
+        },
+        {
+          speaker: "Salesperson",
+          english: "Let me check our stock... Yes, here is a medium for you to try on.",
+          vietnamese: "Để tôi kiểm tra kho... Dạ có, đây là size M cho bạn mặc thử.",
+        },
+        {
+          speaker: "Shopper",
+          english: "It fits perfectly! Is there any discount on this item today?",
+          vietnamese: "Áo vừa vặn lắm! Hôm nay sản phẩm này có được giảm giá không bạn?",
+        },
+        {
+          speaker: "Salesperson",
+          english: "If you pay by card today, you get an extra 10% discount at checkout.",
+          vietnamese: "Nếu bạn thanh toán bằng thẻ hôm nay, bạn sẽ được giảm thêm 10% khi tính tiền.",
+        },
+      ],
+    },
+    quizQuestions: [
+      {
+        id: "q-shop-1",
+        type: "multiple-choice",
+        question: "How much extra discount does the customer get for paying by card?",
+        options: ["5%", "10%", "15%", "20%"],
+        correctAnswer: "10%",
+        explanation: "Nhân viên thông báo: 'you get an extra 10% discount at checkout'.",
+      },
+    ],
+  },
+
+  {
+    id: "listening-workplace",
+    title: "Luyện nghe: Giao tiếp công sở & cuộc họp dự án (Workplace Meeting)",
+    category: "listening",
+    level: "B1",
+    description: "Luyện nghe thảo luận tiến độ phát triển dự án, phân công nhiệm vụ và cam kết thời gian.",
+    durationMinutes: 18,
+    imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
+    createdAt: new Date().toISOString(),
+    listeningScript: {
+      title: "Hội thoại cuộc họp tiến độ dự án phần mềm",
+      topic: "Workplace & Technology",
+      fullText: "Project Lead: Good morning team! Let's review our progress for the upcoming app release.\nDeveloper: The main user interface is 90% complete, but we need more time for security testing.\nProject Lead: Can we finish the security testing before Friday's deadline?\nDeveloper: Yes, if we assign two more engineers to focus on API authentication.\nProject Lead: Great idea! I will coordinate with the QA team immediately.",
+      lines: [
+        {
+          speaker: "Project Lead",
+          english: "Good morning team! Let's review our progress for the upcoming app release.",
+          vietnamese: "Chào buổi sáng cả đội! Chúng ta hãy cùng điểm qua tiến độ cho đợt ra mắt ứng dụng sắp tới.",
+        },
+        {
+          speaker: "Developer",
+          english: "The main user interface is 90% complete, but we need more time for security testing.",
+          vietnamese: "Giao diện người dùng chính đã hoàn thành 90%, nhưng chúng tôi cần thêm thời gian để kiểm thử bảo mật.",
+        },
+        {
+          speaker: "Project Lead",
+          english: "Can we finish the security testing before Friday's deadline?",
+          vietnamese: "Chúng ta có thể hoàn thành kiểm thử bảo mật trước hạn chót thứ Sáu không?",
+        },
+        {
+          speaker: "Developer",
+          english: "Yes, if we assign two more engineers to focus on API authentication.",
+          vietnamese: "Có thể, nếu chúng ta phân công thêm hai kỹ sư tập trung vào xác thực API.",
+        },
+        {
+          speaker: "Project Lead",
+          english: "Great idea! I will coordinate with the QA team immediately.",
+          vietnamese: "Ý tưởng tuyệt vời! Tôi sẽ phối hợp với đội kiểm thử chất lượng ngay lập tức.",
+        },
+      ],
+    },
+    quizQuestions: [
+      {
+        id: "q-work-1",
+        type: "multiple-choice",
+        question: "What percentage of the main user interface is complete?",
+        options: ["70%", "80%", "90%", "100%"],
+        correctAnswer: "90%",
+        explanation: "Lập trình viên nói: 'The main user interface is 90% complete'.",
+      },
+    ],
+  },
+
+  {
+    id: "listening-medical",
+    title: "Luyện nghe: Khám bệnh tại phòng khám (Medical Checkup at Clinic)",
+    category: "listening",
+    level: "B1",
+    description: "Luyện nghe hội thoại miêu tả triệu chứng sức khỏe và nhận lời khuyên, đơn thuốc từ bác sĩ.",
+    durationMinutes: 16,
+    imageUrl: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
+    createdAt: new Date().toISOString(),
+    listeningScript: {
+      title: "Hội thoại khám sức khỏe cùng bác sĩ",
+      topic: "Health & Medicine",
+      fullText: "Doctor: Hello Mr. Green. What symptoms have you been experiencing lately?\nPatient: Doctor, I have had a severe headache and sore throat for three days.\nDoctor: Let me check your temperature and blood pressure... You have a mild fever.\nPatient: Is it serious, doctor? Do I need to take time off work?\nDoctor: No need to worry. I will prescribe some medicine and recommend rest for two days.",
+      lines: [
+        {
+          speaker: "Doctor",
+          english: "Hello Mr. Green. What symptoms have you been experiencing lately?",
+          vietnamese: "Chào anh Green. Gần đây anh gặp phải những triệu chứng sức khỏe nào?",
+        },
+        {
+          speaker: "Patient",
+          english: "Doctor, I have had a severe headache and sore throat for three days.",
+          vietnamese: "Thưa bác sĩ, tôi bị đau đầu dữ dội và đau họng suốt ba ngày nay.",
+        },
+        {
+          speaker: "Doctor",
+          english: "Let me check your temperature and blood pressure... You have a mild fever.",
+          vietnamese: "Để tôi kiểm tra nhiệt độ và huyết áp cho anh... Anh bị sốt nhẹ rồi.",
+        },
+        {
+          speaker: "Patient",
+          english: "Is it serious, doctor? Do I need to take time off work?",
+          vietnamese: "Bệnh có nghiêm trọng không bác sĩ? Tôi có cần xin nghỉ làm không?",
+        },
+        {
+          speaker: "Doctor",
+          english: "No need to worry. I will prescribe some medicine and recommend rest for two days.",
+          vietnamese: "Không cần lo lắng quá. Tôi sẽ kê đơn thuốc và khuyên anh nên nghỉ ngơi trong hai ngày.",
+        },
+      ],
+    },
+    quizQuestions: [
+      {
+        id: "q-med-1",
+        type: "multiple-choice",
+        question: "How long has the patient had a severe headache?",
+        options: ["1 day", "2 days", "3 days", "1 week"],
+        correctAnswer: "3 days",
+        explanation: "Bệnh nhân nói: 'for three days' (được 3 ngày rồi).",
+      },
+    ],
+  },
+
+  {
+    id: "listening-hotel",
+    title: "Luyện nghe: Nhận phòng & dịch vụ khách sạn (Hotel Check-in & Concierge)",
+    category: "listening",
+    level: "B2",
+    description: "Luyện nghe tình huống nhận phòng cao cấp, hỏi dịch vụ ăn sáng và hướng dẫn lên phòng.",
+    durationMinutes: 16,
+    imageUrl: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
+    createdAt: new Date().toISOString(),
+    listeningScript: {
+      title: "Hội thoại check-in tại lễ tân khách sạn 5 sao",
+      topic: "Hotel & Hospitality",
+      fullText: "Receptionist: Good afternoon! Welcome to Grand Palace Hotel. How may I assist you?\nGuest: Hello, I have a reservation under the name David Miller for three nights.\nReceptionist: Ah yes, Mr. Miller. A deluxe ocean-view suite with breakfast included.\nGuest: That's correct. What time is breakfast served in the morning?\nReceptionist: Breakfast is served from 6:30 AM to 10:30 AM at our rooftop restaurant.",
+      lines: [
+        {
+          speaker: "Receptionist",
+          english: "Good afternoon! Welcome to Grand Palace Hotel. How may I assist you?",
+          vietnamese: "Chào buổi chiều! Chào mừng quý khách đến với khách sạn Grand Palace. Tôi có thể giúp gì cho bạn?",
+        },
+        {
+          speaker: "Guest",
+          english: "Hello, I have a reservation under the name David Miller for three nights.",
+          vietnamese: "Xin chào, tôi có đặt phòng trước dưới tên David Miller trong ba đêm.",
+        },
+        {
+          speaker: "Receptionist",
+          english: "Ah yes, Mr. Miller. A deluxe ocean-view suite with breakfast included.",
+          vietnamese: "Dạ đúng rồi, thưa ông Miller. Phòng suite cao cấp hướng biển đã bao gồm bữa sáng.",
+        },
+        {
+          speaker: "Guest",
+          english: "That's correct. What time is breakfast served in the morning?",
+          vietnamese: "Chính xác rồi. Mấy giờ thì bữa sáng được phục vụ vào buổi sáng vậy?",
+        },
+        {
+          speaker: "Receptionist",
+          english: "Breakfast is served from 6:30 AM to 10:30 AM at our rooftop restaurant.",
+          vietnamese: "Bữa sáng được phục vụ từ 6 giờ 30 phút sáng đến 10 giờ 30 phút sáng tại nhà hàng trên tầng thượng.",
+        },
+      ],
+    },
+    quizQuestions: [
+      {
+        id: "q-hotel-1",
+        type: "multiple-choice",
+        question: "Where is breakfast served in the hotel?",
+        options: ["Main lobby", "Poolside bar", "Rooftop restaurant", "In-room dining"],
+        correctAnswer: "Rooftop restaurant",
+        explanation: "Lễ tân thông báo: 'at our rooftop restaurant' (tại nhà hàng tầng thượng).",
+      },
+    ],
+  },
+
+  {
+    id: "listening-tech-support",
+    title: "Luyện nghe: Hỗ trợ kỹ thuật & xử lý sự cố (Tech Support & Troubleshooting)",
+    category: "listening",
+    level: "C1",
+    description: "Luyện nghe trao đổi chuyên sâu xử lý lỗi phần mềm, kết nối máy chủ và hỗ trợ kỹ thuật cao cấp.",
+    durationMinutes: 20,
+    imageUrl: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
+    createdAt: new Date().toISOString(),
+    listeningScript: {
+      title: "Hội thoại hỗ trợ kỹ thuật máy chủ & cơ sở dữ liệu",
+      topic: "Tech Support & IT",
+      fullText: "Support Agent: Tech Support, my name is Sarah. How can I resolve your technical issue today?\nCustomer: Hi Sarah. Our company server experienced a database timeout after the latest system patch.\nSupport Agent: I see. Have you checked the error log files for memory allocation warnings?\nCustomer: Yes, the log indicates a memory overflow in the primary connection pool.\nSupport Agent: Understood. Please increase the connection limit in config.env and restart the service.",
+      lines: [
+        {
+          speaker: "Support Agent",
+          english: "Tech Support, my name is Sarah. How can I resolve your technical issue today?",
+          vietnamese: "Bộ phận hỗ trợ kỹ thuật, tôi là Sarah. Tôi có thể xử lý sự cố kỹ thuật nào cho bạn hôm nay?",
+        },
+        {
+          speaker: "Customer",
+          english: "Hi Sarah. Our company server experienced a database timeout after the latest system patch.",
+          vietnamese: "Chào Sarah. Máy chủ công ty chúng tôi bị lỗi hết giờ kết nối cơ sở dữ liệu sau bản vá hệ thống mới nhất.",
+        },
+        {
+          speaker: "Support Agent",
+          english: "I see. Have you checked the error log files for memory allocation warnings?",
+          vietnamese: "Tôi hiểu rồi. Bạn đã kiểm tra các tệp nhật ký lỗi xem có cảnh báo cấp phát bộ nhớ không?",
+        },
+        {
+          speaker: "Customer",
+          english: "Yes, the log indicates a memory overflow in the primary connection pool.",
+          vietnamese: "Có, tệp nhật ký chỉ ra rằng có sự cố tràn bộ nhớ trong nhóm kết nối chính.",
+        },
+        {
+          speaker: "Support Agent",
+          english: "Understood. Please increase the connection limit in config.env and restart the service.",
+          vietnamese: "Tôi hiểu rồi. Vui lòng tăng giới hạn kết nối trong tệp config.env và khởi động lại dịch vụ.",
+        },
+      ],
+    },
+    quizQuestions: [
+      {
+        id: "q-tech-1",
+        type: "multiple-choice",
+        question: "What issue did the company server experience after the system patch?",
+        options: ["Network outage", "Database timeout", "Disk failure", "CPU overheating"],
+        correctAnswer: "Database timeout",
+        explanation: "Khách hàng miêu tả: 'experienced a database timeout after the latest system patch'.",
       },
     ],
   },
@@ -1043,16 +1834,20 @@ Trình độ hiện tại của học viên: ${userLevel || "B1"}.
 Chế độ thực hành: ${mode || "general"} (Options: general, grammar_check, roleplay_interview, vocabulary_builder).
 
 NHIỆM VỤ CỦA BẠN:
-1. Trả lời bằng tiếng Anh kèm giải thích / dịch nghĩa tiếng Việt ngắn gọn, dễ hiểu bên dưới.
-2. Nếu học viên có lỗi sai ngữ pháp/từ vựng trong tin nhắn của họ, hãy dịu dàng sửa lỗi (Correction) và nêu rõ lý do trước khi trả lời câu hỏi.
+1. Trả lời bằng tiếng Anh tự nhiên.
+2. Nếu học viên có lỗi sai ngữ pháp/từ vựng trong tin nhắn của họ, hãy dịu dàng sửa lỗi (Correction) và nêu rõ lý do bằng tiếng Anh trong phần phản hồi chính.
 3. Luôn kết thúc bằng 1 câu hỏi tương tác để khuyến khích học viên đáp lại.
 4. Giữ giọng văn tự nhiên, khuyến khích và chuyên nghiệp.
 
-Định dạng phản hồi khuyến khích:
-- [Nhận xét / Sửa lỗi nếu có]
-- [Câu trả lời chính bằng Tiếng Anh]
-- [Bản dịch tiếng Việt]
-- [Suggested Reply ngắn cho học viên]`;
+TRẢ VỀ ĐÚNG 1 ĐỊNH DẠNG JSON DUY NHẤT VỚI CÁC TRƯỜNG:
+{
+  "text": "Nội dung phản hồi chính bằng Tiếng Anh (bao gồm nhận xét sửa lỗi nếu có + câu trả lời + câu hỏi tương tác). Dùng định dạng Markdown đẹp mắt.",
+  "translation": "Bản dịch tiếng Việt súc tích, hoàn chỉnh của toàn bộ phần phản hồi chính bằng tiếng Anh ở trên.",
+  "suggestedReply": "1 câu tiếng Anh ngắn gọn (10-15 từ) gợi ý để học viên có thể bấm đáp lại ngay"
+}
+
+QUY TẮC TIẾNG VIỆT CHO BẢN DỊCH:
+Tất cả câu tiếng Việt CHỈ VIẾT HOA CHỮ CÁI ĐẦU TIÊN CỦA CÂU hoặc danh từ riêng. TUYỆT ĐỐI KHÔNG dùng Title Case.`;
 
     const promptText = messages.map((m: any) => `${m.sender === "user" ? "User" : "Engie AI"}: ${m.text}`).join("\n");
 
@@ -1062,11 +1857,21 @@ NHIỆM VỤ CỦA BẠN:
       config: {
         systemInstruction: systemPrompt,
         temperature: 0.7,
+        responseMimeType: "application/json",
       },
     });
 
+    let data: any = {};
+    try {
+      data = JSON.parse(response.text || "{}");
+    } catch (e) {
+      data = { text: response.text };
+    }
+
     res.json({
-      text: response.text,
+      text: data.text || response.text || "I'm ready to practice English with you!",
+      translation: data.translation || "",
+      suggestedReply: data.suggestedReply || "",
       timestamp: new Date().toISOString(),
     });
   } catch (error: any) {
@@ -1075,19 +1880,58 @@ NHIỆM VỤ CỦA BẠN:
   }
 });
 
-// Gemini AI Dynamic Quiz Generator
+// Gemini AI Dynamic Quiz Generator (Real-time dynamic quiz generation)
 app.post("/api/ai/generate-quiz", async (req, res) => {
   try {
-    const { topic, level, count } = req.body;
+    const { topic, level, count, category, grammarSections, vocabularyItems, randomSeed } = req.body;
 
-    const prompt = `Hãy tạo một bộ ${count || 3} câu hỏi trắc nghiệm tiếng Anh chủ đề "${topic || "Giao tiếp hàng ngày"}" trình độ ${level || "B1"}.
-Trả về đúng định dạng JSON array với các thuộc tính:
-- id: string
-- type: "multiple-choice" hoặc "fill-blank"
-- question: nội dung câu hỏi (tiếng Anh)
-- options: mảng 4 lựa chọn (nếu là multiple-choice)
-- correctAnswer: đáp án đúng
-- explanation: giải thích đáp án bằng tiếng Việt chi tiết.`;
+    const questionCount = Math.min(Math.max(Number(count) || 7, 5), 10);
+    const targetTopic = topic || "Ngữ pháp & từ vựng tiếng Anh";
+    const targetLevel = level || "B1";
+    const seed = randomSeed || `${Date.now()}_${Math.random()}`;
+
+    let contextDetails = "";
+    if (grammarSections && Array.isArray(grammarSections) && grammarSections.length > 0) {
+      contextDetails += `\nCấu trúc bài học liên quan:\n` + grammarSections.map((g: any) => `- ${g.title}: ${g.explanation || ''} ${g.formula || ''}`).join("\n");
+    }
+    if (vocabularyItems && Array.isArray(vocabularyItems) && vocabularyItems.length > 0) {
+      contextDetails += `\nTừ vựng trọng tâm bài học:\n` + vocabularyItems.map((v: any) => `- ${v.word} (${v.partOfSpeech}): ${v.meaning}`).join("\n");
+    }
+
+    const prompt = `Bạn là một chuyên gia thiết kế đề thi khảo thí Tiếng Anh hàng đầu.
+Hãy tự động sinh ngẫu nhiên một bộ gồm ĐÚNG ${questionCount} câu hỏi trắc nghiệm tiếng Anh hoàn toàn mới cho bài học / chủ đề: "${targetTopic}" (Trình độ CEFR ${targetLevel}).
+
+MÃ ĐỊNH DANH NGẪU NHIÊN LƯỢT SINH NÀY: ${seed}
+(Đảm bảo sinh câu hỏi ngẫu nhiên, mới mẻ hoàn toàn, không lặp lại các câu hỏi cũ ở các lượt sinh trước).
+
+${contextDetails}
+
+YÊU CẦU CẤU TRÚC BỘ CÂU HỎI CHUẨN SƯ PHẠM (${questionCount} CÂU):
+Bộ câu hỏi PHẢI BAO PHỦ ĐA DẠNG các dạng bài tập sau:
+1. Chia động từ trong ngoặc (Verb conjugation)
+2. Dấu hiệu nhận biết thì / từ chìa khóa (Recognition signals / time markers)
+3. Phân biệt các thể: Câu khẳng định (+), phủ định (-), nghi vấn (?)
+4. Tìm lỗi sai ngữ pháp / từ vựng trong câu (Error detection)
+5. Điền từ thích hợp vào chỗ trống (Fill in the blank)
+
+YÊU CẦU QUY TẮC TIẾNG VIỆT (BẮT BUỘC):
+1. Tất cả phần giải thích (explanation) và nhãn bằng tiếng Việt CHỈ VIẾT HOA CHỮ CÁI ĐẦU TIÊN CỦA CÂU hoặc danh từ riêng.
+2. TUYỆT ĐỐI KHÔNG dùng Title Case (viết hoa chữ cái đầu của mỗi từ). 
+   - Ví dụ SAI: "Thì Hiện Tại Hoàn Thành Được Dùng Để..."
+   - Ví dụ ĐÚNG: "Thì hiện tại hoàn thành được dùng để chỉ hành động vừa mới xảy ra..."
+
+ĐỊNH DẠNG TRẢ VỀ:
+Trả về ĐÚNG 1 JSON array chứa chính xác ${questionCount} câu hỏi với cấu trúc:
+[
+  {
+    "id": "q1",
+    "type": "multiple-choice" hoặc "fill-blank",
+    "question": "Nội dung câu hỏi bằng tiếng Anh...",
+    "options": ["Lựa chọn A", "Lựa chọn B", "Lựa chọn C", "Lựa chọn D"],
+    "correctAnswer": "Đáp án đúng chính xác",
+    "explanation": "Giải thích ngắn gọn, súc tích bằng tiếng Việt (tuân thủ quy tắc viết hoa)."
+  }
+]`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3.6-flash",
@@ -1156,84 +2000,92 @@ Trả về ĐÚNG ĐỊNH DẠNG JSON duy nhất với cấu trúc:
   ]
 }`;
     } else if (selectedCategory === 'listening') {
-      prompt = `Hãy đóng vai một chuyên gia giáo trình Tiếng Anh hàng đầu.
-Hãy tự động tạo bài học LUYỆN NGHE & NÓI về chủ đề "${topic.trim()}" ở trình độ CEFR "${level || "B1"}".
+      prompt = `Hãy đóng vai một chuyên gia biên soạn giáo trình Tiếng Anh hàng đầu.
+Hãy tự động tạo bài học LUYỆN NGHE & NÓI HỘI THOẠI thực tế về chủ đề "${topic.trim()}" ở trình độ CEFR "${level || "B1"}".
 
 Trả về ĐÚNG ĐỊNH DẠNG JSON duy nhất với cấu trúc:
 {
-  "title": "Tên bài luyện nghe (vd: Hội thoại Luyện nghe: ${topic.trim()})",
-  "description": "Mô tả ngắn về tình huống giao tiếp luyện nghe",
+  "title": "Luyện nghe: ${topic.trim()}",
+  "description": "Mô tả ngắn 1-2 câu về ngữ cảnh và mục tiêu rèn luyện phản xạ nghe nói thực tế cho chủ đề này",
   "listeningScript": {
-    "title": "Hội thoại luyện nghe ${topic.trim()}",
+    "title": "Hội thoại luyện nghe chủ đề ${topic.trim()}",
     "topic": "${topic.trim()}",
-    "fullText": "Toàn văn bài hội thoại bằng tiếng Anh...",
+    "fullText": "Toàn văn bài hội thoại bằng tiếng Anh ghép từ tất cả các câu thoại...",
     "lines": [
       {
-        "speaker": "Person A",
-        "english": "Lời thoại tiếng Anh...",
-        "vietnamese": "Dịch tiếng Việt..."
+        "speaker": "Tên nhân vật A (ví dụ: Receptionist / Interviewer / Waiter / Agent)",
+        "english": "Câu thoại tiếng Anh giao tiếp chuẩn xác, tự nhiên...",
+        "vietnamese": "Dịch nghĩa tiếng Việt câu thoại..."
       },
       {
-        "speaker": "Person B",
-        "english": "Lời thoại tiếng Anh...",
-        "vietnamese": "Dịch tiếng Việt..."
+        "speaker": "Tên nhân vật B (ví dụ: Guest / Applicant / Customer / Passenger)",
+        "english": "Câu thoại phản hồi tiếng Anh...",
+        "vietnamese": "Dịch nghĩa tiếng Việt câu thoại..."
       }
     ]
   },
   "vocabularyItems": [
     {
-      "word": "từ vựng xuất hiện trong bài nghe",
+      "word": "từ vựng cốt lõi xuất hiện trong bài nghe",
       "phonetic": "/phiên âm IPA/",
-      "partOfSpeech": "noun/verb",
+      "partOfSpeech": "noun/verb/adj",
       "meaning": "nghĩa tiếng Việt",
-      "example": "ví dụ tiếng Anh",
+      "example": "ví dụ tiếng Anh trong bài nghe",
       "exampleMeaning": "dịch nghĩa ví dụ"
     }
   ],
   "quizQuestions": [
     {
       "type": "multiple-choice",
-      "question": "Câu hỏi kiểm tra khả năng nghe hiểu bài hội thoại trên bằng tiếng Anh",
+      "question": "Câu hỏi trắc nghiệm kiểm tra khả năng nghe hiểu bài hội thoại bằng tiếng Anh",
       "options": ["A", "B", "C", "D"],
-      "correctAnswer": "Đáp án đúng",
-      "explanation": "Giải thích nội dung bài nghe liên quan bằng tiếng Việt"
+      "correctAnswer": "Đáp án đúng chính xác",
+      "explanation": "Giải thích chi tiết nội dung bài nghe liên quan bằng tiếng Việt"
     }
   ]
-}`;
+}
+
+QUY TẮC BẮT BUỘC:
+1. Tạo 5 đến 8 lượt hội thoại đối đáp tự nhiên giữa 2 nhân vật phù hợp với ngữ cảnh "${topic.trim()}".
+2. fullText phải chứa toàn bộ các câu thoại tiếng Anh ghép lại theo thứ tự.
+3. Trích xuất 3 đến 5 từ vựng cốt lõi nhất có trong đoạn hội thoại.
+4. Tạo 2 đến 3 câu hỏi trắc nghiệm kiểm tra chi tiết thông tin trong bài nghe.
+5. QUY TẮC CHÍNH TẢ TIẾNG VIỆT (TỐI QUAN TRỌNG): Tất cả văn bản tiếng Việt (tiêu đề, mô tả, dịch câu thoại, nghĩa từ vựng, giải thích) CHỈ VIẾT HOA CHỮ CÁI ĐẦU TIÊN CỦA CÂU hoặc danh từ riêng. KHÔNG ĐƯỢC dùng Title Case (viết hoa chữ cái đầu của từng từ).`;
     } else {
-      prompt = `Hãy đóng vai một chuyên gia giáo trình Tiếng Anh hàng đầu.
-Hãy tự động tạo bộ từ vựng Flashcard và câu hỏi trắc nghiệm tiếng Anh cho bài học chủ đề "${topic.trim()}" ở trình độ CEFR "${level || "B1"}".
+      prompt = `Hãy đóng vai một chuyên gia biên soạn giáo trình Tiếng Anh hàng đầu.
+Hãy tự động sinh một bài học từ vựng Flashcard hoàn chỉnh và câu hỏi trắc nghiệm kiểm tra cho chủ đề ngách "${topic.trim()}" ở trình độ CEFR "${level || "B1"}".
 
 Trả về ĐÚNG ĐỊNH DẠNG JSON duy nhất với cấu trúc:
 {
-  "title": "Từ vựng Tiếng Anh chủ đề ${topic.trim()}",
-  "description": "Mô tả ngắn gọn 1-2 câu về mục tiêu bài học từ vựng",
+  "title": "Từ vựng tiếng Anh chủ đề ${topic.trim()}",
+  "description": "Mô tả ngắn gọn 1-2 câu về mục tiêu và ứng dụng thực tế của bộ từ vựng này trong đời sống hoặc công việc",
   "vocabularyItems": [
     {
-      "word": "từ tiếng Anh",
-      "phonetic": "phiên âm IPA chuẩn với dấu gạch chéo, vd: /kəˈlæb.ə.reɪt/",
-      "partOfSpeech": "noun / verb / adjective / adverb",
-      "meaning": "nghĩa tiếng Việt ngắn gọn, chính xác",
-      "example": "câu ví dụ tiếng Anh có chứa từ",
-      "exampleMeaning": "bản dịch tiếng Việt của câu ví dụ"
+      "word": "từ hoặc cụm từ tiếng Anh chuẩn xác",
+      "phonetic": "/phiên âm IPA chuẩn quốc tế có dấu gạch chéo/",
+      "partOfSpeech": "danh từ / động từ / tính từ / trạng từ / cụm danh từ",
+      "meaning": "nghĩa tiếng Việt chính xác, súc tích",
+      "example": "câu ví dụ tiếng Anh tự nhiên trong ngữ cảnh thực tế",
+      "exampleMeaning": "dịch nghĩa tiếng Việt của câu ví dụ"
     }
   ],
   "quizQuestions": [
     {
       "type": "multiple-choice",
-      "question": "Nội dung câu hỏi trắc nghiệm kiểm tra từ vựng bằng tiếng Anh",
+      "question": "Nội dung câu hỏi trắc nghiệm bằng tiếng Anh kiểm tra cách dùng hoặc nghĩa từ vựng",
       "options": ["Lựa chọn A", "Lựa chọn B", "Lựa chọn C", "Lựa chọn D"],
-      "correctAnswer": "Đáp án đúng chính xác trong 4 lựa chọn",
+      "correctAnswer": "Đáp án đúng chính xác nằm trong 4 lựa chọn",
       "explanation": "Giải thích chi tiết lý do bằng tiếng Việt"
     }
   ]
 }
 
-Yêu cầu:
-1. Tạo 5 từ vựng tiêu biểu, thực tế và hữu ích nhất cho chủ đề "${topic.trim()}".
-2. Tương ứng với mỗi từ vựng, tự động tạo 1 câu hỏi trắc nghiệm Quiz kiểm tra từ đó.
-3. Phiên âm IPA phải chuẩn xác có dấu gạch chéo /.../.
-4. Cung cấp đầy đủ ví dụ tiếng Anh và bản dịch tiếng Việt.`;
+QUY TẮC BẮT BUỘC:
+1. Sinh chính xác 6 đến 8 từ/cụm từ vựng quan trọng, hữu ích nhất thuộc chủ đề "${topic.trim()}".
+2. Tương ứng với bộ từ vựng, tạo 5 đến 6 câu hỏi trắc nghiệm trắc nghiệm để kiểm tra mức độ ghi nhớ.
+3. Phiên âm IPA phải chuẩn xác có dấu gạch chéo /.../ (ví dụ: /kəˈlæb.ə.reɪt/).
+4. Cung cấp đầy đủ ví dụ tiếng Anh thực tế và bản dịch tiếng Việt tương ứng.
+5. QUY TẮC CHÍNH TẢ TIẾNG VIỆT (TỐI QUAN TRỌNG): Tất cả các văn bản tiếng Việt (tiêu đề, mô tả, từ loại, nghĩa, dịch ví dụ, giải thích) CHỈ VIẾT HOA CHỮ CÁI ĐẦU TIÊN CỦA CÂU hoặc danh từ riêng. KHÔNG ĐƯỢC dùng Title Case (viết hoa chữ cái đầu của từng từ).`;
     }
 
     const response = await ai.models.generateContent({
@@ -1249,6 +2101,71 @@ Yêu cầu:
   } catch (error: any) {
     console.error("Gemini AI Lesson Content Generation Error:", error);
     res.status(500).json({ error: "Không thể tạo nội dung bài học bằng AI. Vui lòng thử lại sau." });
+  }
+});
+
+// Gemini AI Role-play Conversation Endpoint
+app.post("/api/ai/roleplay", async (req, res) => {
+  try {
+    const { scenarioTitle, topic, aiRole, userRole, userLevel, conversationHistory, userMessage } = req.body;
+
+    if (!userMessage || !userMessage.trim()) {
+      return res.status(400).json({ error: "Vui lòng nhập hoặc nói câu trả lời của bạn." });
+    }
+
+    const historyFormatted = (conversationHistory || [])
+      .map((m: any) => `${m.role === 'user' ? (userRole || 'Người học') : (aiRole || 'AI')}: ${m.text}`)
+      .join("\n");
+
+    const prompt = `Bạn là một giáo viên tiếng Anh bản xứ đang đóng vai phản xạ giao tiếp thực tế với người học.
+BỐI CẢNH HỘI THOẠI:
+- Bài học: "${scenarioTitle || topic || 'Giao tiếp tiếng Anh'}"
+- Vai của AI: ${aiRole || 'Người đối thoại'}
+- Vai của người học: ${userRole || 'Người trả lời'}
+- Trình độ người học: CEFR ${userLevel || 'B1'}
+
+LỊCH SỬ HỘI THOẠI TRƯỚC ĐÓ:
+${historyFormatted || '(Mới bắt đầu hội thoại)'}
+
+CÂU NÓI / CÂU TRẢ LỜI MỚI NHẤT CỦA NGƯỜI HỌC:
+"${userMessage.trim()}"
+
+NHIỆM VỤ CỦA BẠN:
+1. Tiếp tục đóng vai nhân vật "${aiRole || 'AI'}" và đưa ra 1 câu đối đáp tự nhiên bằng tiếng Anh (aiReply).
+2. Dịch câu đối đáp đó sang tiếng Việt (aiReplyVietnamese).
+3. Đánh giá câu trả lời của người học bằng tiếng Việt (tuân thủ quy tắc viết hoa chữ cái đầu câu):
+   - Đánh giá phản xạ (score/10, ngắn gọn)
+   - Nhận xét nội dung & ngữ pháp (feedback)
+   - Gợi ý phát âm / từ vựng nếu có (pronunciationTip)
+
+YÊU CẦU QUY TẮC TIẾNG VIỆT (TỐI QUAN TRỌNG):
+Tất cả câu tiếng Việt (aiReplyVietnamese, feedback, pronunciationTip) CHỈ VIẾT HOA CHỮ CÁI ĐẦU TIÊN CỦA CÂU hoặc danh từ riêng. TUYỆT ĐỐI KHÔNG dùng Title Case.
+
+Trả về ĐÚNG 1 JSON duy nhất theo cấu trúc:
+{
+  "aiReply": "Câu tiếng Anh tự nhiên tiếp theo của AI...",
+  "aiReplyVietnamese": "Dịch tiếng Việt của câu AI...",
+  "evaluation": {
+    "score": "8/10",
+    "feedback": "Nhận xét câu trả lời của người học...",
+    "grammarTip": "Gợi ý cải thiện ngữ pháp nếu có...",
+    "pronunciationTip": "Mẹo phát âm các từ chìa khóa..."
+  }
+}`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: prompt,
+      config: {
+        responseMimeType: "application/json",
+      },
+    });
+
+    const result = JSON.parse(response.text || "{}");
+    res.json(result);
+  } catch (error: any) {
+    console.error("Gemini AI Roleplay Error:", error);
+    res.status(500).json({ error: "Không thể xử lý hội thoại AI. Vui lòng thử lại sau." });
   }
 });
 

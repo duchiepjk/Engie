@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Lesson, UserProgress } from '../types';
 import { speakEnglishText } from '../lib/audio';
+import { AiRoleplaySection } from './AiRoleplaySection';
 import { 
   ArrowLeft, 
   Volume2, 
@@ -16,7 +17,11 @@ import {
   ChevronRight,
   ChevronLeft,
   Bookmark,
-  Check
+  Check,
+  Eye,
+  EyeOff,
+  Lock,
+  Ear
 } from 'lucide-react';
 
 interface LessonDetailViewProps {
@@ -36,6 +41,7 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
   const [currentFlashcardIndex, setCurrentFlashcardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [savedWords, setSavedWords] = useState<string[]>(progress.savedVocab || []);
+  const [showScript, setShowScript] = useState<boolean>(false);
 
   const isCompleted = progress.completedLessonIds.includes(lesson.id);
 
@@ -274,49 +280,109 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
       {/* 2. GRAMMAR CATEGORY */}
       {lesson.category === 'grammar' && lesson.grammarSections && (
         <div className="space-y-6">
-          <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-            <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-            Cấu trúc & quy tắc ngữ pháp
-          </h2>
-
-          <div className="space-y-6">
-            {lesson.grammarSections.map((sec, idx) => (
-              <div key={sec.id || idx} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-2xs space-y-4">
-                <h3 className="text-base font-bold text-indigo-900 dark:text-indigo-300">{sec.title}</h3>
-                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{sec.explanation}</p>
-
-                {sec.formula && (
-                  <div className="p-4 bg-indigo-50/70 dark:bg-indigo-950/50 border border-indigo-200/80 dark:border-indigo-800/80 rounded-xl font-mono text-xs text-indigo-900 dark:text-indigo-300 space-y-1">
-                    <div className="font-bold uppercase tracking-wider text-[11px] text-indigo-700 dark:text-indigo-400">Công thức chính:</div>
-                    <div className="text-sm font-bold text-indigo-950 dark:text-indigo-200">{sec.formula}</div>
-                  </div>
-                )}
-
-                <div className="space-y-2 pt-2">
-                  <h4 className="text-xs font-bold text-slate-800 dark:text-slate-300 uppercase tracking-wider">Ví dụ ứng dụng chuẩn:</h4>
-                  <div className="space-y-2">
-                    {sec.examples.map((ex, eIdx) => (
-                      <div key={eIdx} className="p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs space-y-1 flex items-start justify-between">
-                        <div>
-                          <div className="font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                            {ex.english}
-                          </div>
-                          <div className="text-slate-500 dark:text-slate-400 pl-3">👉 {ex.vietnamese}</div>
-                        </div>
-                        <button
-                          onClick={() => speakEnglishText(ex.english)}
-                          className="p-1.5 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg"
-                          title="Phát âm câu ví dụ"
-                        >
-                          <Volume2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+          
+          {/* Teacher Classroom Header Banner */}
+          <div className="p-4 sm:p-5 bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-2xl shadow-sm flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-600/50 border border-indigo-400/30 flex items-center justify-center shrink-0 text-2xl shadow-inner">
+              👩‍🏫
+            </div>
+            <div className="space-y-0.5">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-400/20 px-2 py-0.5 rounded-md border border-amber-400/30">
+                  Lớp học cùng cô giáo
+                </span>
+                <span className="text-xs text-indigo-200 hidden sm:inline">• Bài giảng chuẩn sư phạm</span>
               </div>
-            ))}
+              <h2 className="text-base sm:text-lg font-bold text-white">
+                Nội dung bài giảng & Cấu trúc chi tiết
+              </h2>
+              <p className="text-xs text-indigo-200 leading-normal">
+                Hãy cùng theo dõi từng phần bài giảng theo đúng lộ trình sư phạm bên dưới nhé!
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-5">
+            {lesson.grammarSections.map((sec, idx) => {
+              const titleLower = sec.title.toLowerCase();
+              let sectionBadge = { icon: '📘', color: 'indigo', label: 'Bài giảng' };
+              
+              if (titleLower.includes('mục tiêu')) {
+                sectionBadge = { icon: '🎯', color: 'indigo', label: '1. Mục tiêu bài học' };
+              } else if (titleLower.includes('khái niệm')) {
+                sectionBadge = { icon: '💡', color: 'blue', label: '2. Khái niệm & bản chất' };
+              } else if (titleLower.includes('dấu hiệu')) {
+                sectionBadge = { icon: '🔑', color: 'amber', label: '3. Dấu hiệu nhận biết' };
+              } else if (titleLower.includes('công thức')) {
+                sectionBadge = { icon: '📐', color: 'purple', label: '4. Công thức & cách dùng' };
+              } else if (titleLower.includes('ví dụ')) {
+                sectionBadge = { icon: '🌟', color: 'emerald', label: '5. Ví dụ minh họa' };
+              } else if (titleLower.includes('lưu ý')) {
+                sectionBadge = { icon: '📌', color: 'rose', label: '6. Lưu ý nhỏ & mẹo' };
+              }
+
+              return (
+                <div key={sec.id || idx} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-4">
+                  
+                  {/* Section Title Header */}
+                  <div className="flex items-center gap-2.5 pb-2 border-b border-slate-100 dark:border-slate-800">
+                    <span className="text-xl">{sectionBadge.icon}</span>
+                    <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
+                      {sec.title}
+                    </h3>
+                  </div>
+
+                  {/* Section Explanation Text */}
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                    {sec.explanation}
+                  </p>
+
+                  {/* Formula Box if provided */}
+                  {sec.formula && (
+                    <div className="p-4 bg-slate-50 dark:bg-slate-950/70 border border-indigo-200/80 dark:border-indigo-900/60 rounded-xl font-mono text-xs text-indigo-950 dark:text-indigo-200 space-y-2">
+                      <div className="font-bold uppercase tracking-wider text-[11px] text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                        <span>Công thức & cấu trúc ghi nhớ:</span>
+                      </div>
+                      <div className="text-xs sm:text-sm font-semibold whitespace-pre-line leading-relaxed text-indigo-900 dark:text-indigo-200 bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800">
+                        {sec.formula}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Examples List if provided */}
+                  {sec.examples && sec.examples.length > 0 && (
+                    <div className="space-y-2 pt-2">
+                      <h4 className="text-xs font-bold text-slate-800 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+                        Ví dụ thực tế đời thường ({sec.examples.length} câu):
+                      </h4>
+                      <div className="space-y-2">
+                        {sec.examples.map((ex, eIdx) => (
+                          <div key={eIdx} className="p-3 bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 rounded-xl text-xs space-y-1 flex items-start justify-between gap-3 hover:border-indigo-300 dark:hover:border-indigo-600 transition-colors">
+                            <div className="space-y-0.5">
+                              <div className="font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 text-xs sm:text-sm">
+                                <span className="text-indigo-600 dark:text-indigo-400 font-bold">•</span>
+                                {ex.english}
+                              </div>
+                              <div className="text-slate-600 dark:text-slate-400 pl-3 italic">👉 {ex.vietnamese}</div>
+                            </div>
+                            <button
+                              onClick={() => speakEnglishText(ex.english)}
+                              className="p-1.5 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg shrink-0 transition-colors"
+                              title="Phát âm câu ví dụ này"
+                            >
+                              <Volume2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
@@ -324,48 +390,106 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
       {/* 3. LISTENING CATEGORY */}
       {lesson.category === 'listening' && lesson.listeningScript && (
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <Headphones className="w-5 h-5 text-purple-600 dark:text-purple-400" />
               Luyện nghe bài hội thoại tiếng Anh
             </h2>
-            <button
-              onClick={() => speakEnglishText(lesson.listeningScript!.fullText)}
-              className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold shadow-md shadow-purple-500/20 transition-all flex items-center gap-1.5 whitespace-nowrap"
-            >
-              <Play className="w-4 h-4 fill-white shrink-0" />
-              <span>Phát toàn bộ đoạn audio</span>
-            </button>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => speakEnglishText(lesson.listeningScript!.fullText)}
+                className="px-3.5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold shadow-md shadow-purple-500/20 transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+              >
+                <Play className="w-4 h-4 fill-white shrink-0" />
+                <span>Phát toàn bộ đoạn audio</span>
+              </button>
+
+              <button
+                onClick={() => setShowScript(!showScript)}
+                className="px-3.5 py-2 bg-white dark:bg-slate-800 hover:bg-purple-50 dark:hover:bg-slate-700 text-purple-700 dark:text-purple-300 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border border-purple-200 dark:border-purple-800 shadow-2xs cursor-pointer"
+              >
+                {showScript ? (
+                  <>
+                    <EyeOff className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                    <span>Ẩn transcript</span>
+                  </>
+                ) : (
+                  <>
+                    <Eye className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                    <span>Hiển thị transcript</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
 
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-2xs space-y-6">
-            <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">{lesson.listeningScript.title}</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Chủ đề: {lesson.listeningScript.topic}</p>
+            <div className="border-b border-slate-100 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">{lesson.listeningScript.title}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Chủ đề: {lesson.listeningScript.topic}</p>
+              </div>
+
+              {!showScript && (
+                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 rounded-full text-xs font-bold flex items-center gap-1 self-start sm:self-auto border border-purple-200 dark:border-purple-800">
+                  <Lock className="w-3.5 h-3.5 text-purple-600" />
+                  Script đang ẩn (Chế độ tập trung)
+                </span>
+              )}
             </div>
 
-            {/* Conversation Script Breakdown */}
-            <div className="space-y-4">
-              {lesson.listeningScript.lines.map((line, lIdx) => (
-                <div key={lIdx} className="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl space-y-2 hover:border-purple-300 dark:hover:border-purple-500 transition-colors">
-                  <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 text-[11px] font-bold bg-purple-100 dark:bg-purple-950/80 text-purple-800 dark:text-purple-300 rounded-md">
-                      {line.speaker}
-                    </span>
-                    <button
-                      onClick={() => speakEnglishText(line.english)}
-                      className="px-2.5 py-1 text-xs font-semibold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50 hover:bg-purple-100 dark:hover:bg-purple-900/50 rounded-lg flex items-center gap-1"
-                    >
-                      <Volume2 className="w-3.5 h-3.5" />
-                      Nghe dòng này
-                    </button>
+            {/* Conversation Script Breakdown or Focus Mode Banner */}
+            {!showScript ? (
+              <div className="p-6 bg-purple-50/70 dark:bg-purple-950/30 border border-purple-200/80 dark:border-purple-800/60 rounded-2xl space-y-3 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-1.5 text-purple-800 dark:text-purple-300 font-bold text-xs bg-purple-100 dark:bg-purple-950 px-2.5 py-0.5 rounded-full">
+                    <Ear className="w-3.5 h-3.5 text-purple-600" />
+                    <span>Chế độ nghe tập trung</span>
                   </div>
-                  <div className="text-sm font-semibold text-slate-900 dark:text-slate-100">{line.english}</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400 italic">👉 {line.vietnamese}</div>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+                    Script hội thoại đang được che lại để giúp bạn tập trung hoàn toàn vào việc lắng nghe âm thanh và rèn luyện phản xạ nghe hiểu tự nhiên. Nhấn "Phát toàn bộ đoạn audio" để nghe, sau đó nhấn "Hiển thị transcript" nếu muốn đối soát lại văn bản.
+                  </p>
                 </div>
-              ))}
-            </div>
+                <button
+                  onClick={() => setShowScript(true)}
+                  className="px-4 py-2.5 bg-white dark:bg-slate-800 hover:bg-purple-100 dark:hover:bg-slate-700 text-purple-700 dark:text-purple-300 text-xs font-bold border border-purple-200 dark:border-purple-700 rounded-xl shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
+                >
+                  <Eye className="w-4 h-4 text-purple-600" />
+                  <span>Hiển thị transcript ngay</span>
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-4 animate-in fade-in duration-200">
+                {lesson.listeningScript.lines.map((line, lIdx) => (
+                  <div key={lIdx} className="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl space-y-2 hover:border-purple-300 dark:hover:border-purple-500 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2.5 py-0.5 text-[11px] font-bold bg-purple-100 dark:bg-purple-950/80 text-purple-800 dark:text-purple-300 rounded-md">
+                        {line.speaker}
+                      </span>
+                      <button
+                        onClick={() => speakEnglishText(line.english)}
+                        className="px-2.5 py-1 text-xs font-semibold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50 hover:bg-purple-100 dark:hover:bg-purple-900/50 rounded-lg flex items-center gap-1 cursor-pointer"
+                      >
+                        <Volume2 className="w-3.5 h-3.5" />
+                        Nghe dòng này
+                      </button>
+                    </div>
+                    <div className="text-sm font-semibold text-slate-900 dark:text-slate-100">{line.english}</div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 italic">👉 {line.vietnamese}</div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
+
+          {/* AI Roleplay Interactive Section */}
+          <AiRoleplaySection
+            lessonTitle={lesson.title}
+            topic={lesson.listeningScript.topic || lesson.title}
+            userLevel={lesson.level}
+            scriptLines={lesson.listeningScript.lines}
+          />
         </div>
       )}
 

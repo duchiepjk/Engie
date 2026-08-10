@@ -14,7 +14,8 @@ import {
   TrendingUp, 
   ArrowRight,
   Clock,
-  PartyPopper
+  PartyPopper,
+  Zap
 } from 'lucide-react';
 
 interface HomeDashboardProps {
@@ -215,67 +216,131 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
         </div>
       </div>
 
-      {/* Quick Action Navigation Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Feature Navigation Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         
+        {/* Card 1: Trắc nghiệm AI (Priority Card with Left Amber Border & Badge) */}
         <div 
-          onClick={() => onNavigateTab('lessons')} 
-          className="p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group"
+          onClick={onOpenAiQuiz}
+          className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 dark:border-slate-800 border-l-[4px] border-l-[#FBBF24] shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer group flex flex-col justify-between min-h-[190px]"
         >
-          <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-            <BookOpen className="w-5 h-5" />
+          <div className="space-y-3.5">
+            <div className="flex items-center justify-between gap-2">
+              <div className="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                <Sparkles className="w-5 h-5 fill-amber-500/20" />
+              </div>
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/70 border border-amber-200/80 dark:border-amber-800/80 px-2.5 py-1 rounded-full">
+                ⚡ Tính năng ưu tiên
+              </span>
+            </div>
+
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                <span>Trắc nghiệm AI</span>
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                Tự động khởi tạo bộ câu hỏi ngẫu nhiên đa dạng thì, ngữ pháp & từ vựng theo thời gian thực.
+              </p>
+            </div>
           </div>
-          <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors text-sm sm:text-base">
-            Từ vựng tiếng Anh
-          </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            {vocabularyLessons.length} bài học flashcard & phát âm
-          </p>
+
+          <div className="pt-4 flex items-center gap-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
+            <span>Tạo đề AI ngay</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </div>
         </div>
 
+        {/* Card 2: Từ vựng tiếng Anh */}
         <div 
-          onClick={() => onNavigateTab('lessons')} 
-          className="p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-500 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group"
+          onClick={() => onNavigateTab('lessons')}
+          className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer group flex flex-col justify-between min-h-[190px]"
         >
-          <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-            <FileText className="w-5 h-5" />
+          <div className="space-y-3.5">
+            <div className="flex items-center justify-between gap-2">
+              <div className="w-11 h-11 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 rounded-full border border-blue-100 dark:border-blue-900/40">
+                {vocabularyLessons.length} bài học
+              </span>
+            </div>
+
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                Từ vựng tiếng Anh
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                Học qua Flashcard tương tác, phiên âm quốc tế IPA & phát âm AI giọng chuẩn bản xứ.
+              </p>
+            </div>
           </div>
-          <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors text-sm sm:text-base">
-            Ngữ pháp chuẩn
-          </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            {grammarLessons.length} bài phân tích công thức & ví dụ
-          </p>
+
+          <div className="pt-4 flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+            <span>Khám phá từ vựng</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </div>
         </div>
 
+        {/* Card 3: Ngữ pháp chuẩn CEFR */}
         <div 
-          onClick={() => onNavigateTab('lessons')} 
-          className="p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-purple-400 dark:hover:border-purple-500 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group"
+          onClick={() => onNavigateTab('lessons')}
+          className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer group flex flex-col justify-between min-h-[190px]"
         >
-          <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-            <Headphones className="w-5 h-5" />
+          <div className="space-y-3.5">
+            <div className="flex items-center justify-between gap-2">
+              <div className="w-11 h-11 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                <FileText className="w-5 h-5" />
+              </div>
+              <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-100 dark:border-emerald-900/40">
+                {grammarLessons.length} bài học
+              </span>
+            </div>
+
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                Ngữ pháp chuẩn CEFR
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                Tổng hợp 12 thì tiếng Anh, sơ đồ cấu trúc, dấu hiệu nhận biết & ví dụ minh họa thực tế.
+              </p>
+            </div>
           </div>
-          <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors text-sm sm:text-base">
-            Luyện nghe nói
-          </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            {listeningLessons.length} bài nghe tốc độ người bản xứ
-          </p>
+
+          <div className="pt-4 flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform">
+            <span>Ôn ngữ pháp</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </div>
         </div>
 
+        {/* Card 4: Luyện nghe nói */}
         <div 
-          onClick={onOpenAiQuiz} 
-          className="p-5 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/30 border border-amber-200/80 dark:border-amber-800/60 hover:border-amber-400 dark:hover:border-amber-500 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group"
+          onClick={() => onNavigateTab('lessons')}
+          className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer group flex flex-col justify-between min-h-[190px]"
         >
-          <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-            <Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+          <div className="space-y-3.5">
+            <div className="flex items-center justify-between gap-2">
+              <div className="w-11 h-11 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                <Headphones className="w-5 h-5" />
+              </div>
+              <span className="text-[11px] font-semibold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-2.5 py-0.5 rounded-full border border-purple-100 dark:border-purple-900/40">
+                {listeningLessons.length} bài học
+              </span>
+            </div>
+
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                Luyện nghe & Giao tiếp
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                Bài nghe tốc độ chuẩn bản xứ, luyện phản xạ tình huống thực tế & thực hành hội thoại.
+              </p>
+            </div>
           </div>
-          <h3 className="font-bold text-slate-900 dark:text-amber-200 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors text-sm sm:text-base flex items-center gap-1">
-            Trắc nghiệm AI
-          </h3>
-          <p className="text-xs text-amber-700/80 dark:text-amber-300/80 mt-1">
-            Tạo đề trắc nghiệm tự động theo chủ đề tùy chọn
-          </p>
+
+          <div className="pt-4 flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-purple-400 group-hover:translate-x-1 transition-transform">
+            <span>Luyện nghe ngay</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </div>
         </div>
 
       </div>
