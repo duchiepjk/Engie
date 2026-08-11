@@ -7,6 +7,7 @@ import {
   BookOpen, 
   Sparkles,
   UserCheck,
+  LogIn,
   LogOut,
   SlidersHorizontal,
   Check,
@@ -125,10 +126,10 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
           {user.isGuest ? (
             <button
               onClick={onOpenAuthModal}
-              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs shadow-md transition-all flex items-center gap-2 active:scale-95"
+              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs shadow-xs hover:shadow-md transition-all flex items-center gap-1.5 active:scale-95 cursor-pointer"
             >
-              <UserCheck className="w-4 h-4" />
-              <span>Đăng nhập Google</span>
+              <LogIn className="w-4 h-4" />
+              <span>Đăng nhập</span>
             </button>
           ) : (
             onLogout && (

@@ -97,24 +97,26 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
       
       {/* Guest Mode Sync Alert Banner */}
       {user.isGuest && (
-        <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/70 border border-amber-200 dark:border-amber-800/80 text-amber-900 dark:text-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+        <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/70 border border-amber-200/90 dark:border-amber-800/80 text-amber-900 dark:text-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3.5 shadow-2xs transition-all">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
               <Sparkles className="w-5 h-5" />
             </div>
-            <div>
-              <div className="font-bold text-sm">Bạn đang duyệt ở trạng thái Khách!</div>
-              <div className="text-xs text-amber-800/90 dark:text-amber-300/90">
-                Đăng nhập bằng tài khoản Google để tự động lưu điểm XP, chuỗi học liên tục và đồng bộ tiến độ Firestore.
+            <div className="space-y-0.5">
+              <div className="font-bold text-sm text-amber-950 dark:text-amber-200">
+                Chế độ Khách (Guest Mode)
+              </div>
+              <div className="text-xs text-amber-800/90 dark:text-amber-300/90 leading-relaxed font-medium">
+                Bạn đang trải nghiệm ở chế độ Khách. Đăng nhập ngay để lưu chuỗi học Streak, tích lũy điểm XP và đồng bộ tiến độ cá nhân!
               </div>
             </div>
           </div>
           {onOpenAuthModal && (
             <button
               onClick={onOpenAuthModal}
-              className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl transition-all shadow-md shrink-0 whitespace-nowrap"
+              className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl transition-all shadow-xs hover:shadow-md shrink-0 whitespace-nowrap cursor-pointer active:scale-95"
             >
-              Đăng nhập Google ngay
+              Đăng nhập ngay
             </button>
           )}
         </div>

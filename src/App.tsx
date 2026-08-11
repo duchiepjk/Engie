@@ -12,6 +12,7 @@ import {
   updateUserLevelInFirestore
 } from './lib/firebase';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import { GoogleAuthModal } from './components/GoogleAuthModal';
 import { ExportGuideModal } from './components/ExportGuideModal';
 import { HomeDashboard } from './components/HomeDashboard';
@@ -80,8 +81,21 @@ export default function App() {
 
   // Modals
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authNoticeMessage, setAuthNoticeMessage] = useState<string | null>(null);
   const [isExportDocsOpen, setIsExportDocsOpen] = useState(false);
   const [isAiQuizOpen, setIsAiQuizOpen] = useState(false);
+
+  const triggerLoginPrompt = (notice?: string) => {
+    setAuthNoticeMessage(
+      notice || 'Vui lòng đăng nhập bằng Google để bắt đầu học tập và làm trắc nghiệm.'
+    );
+    setIsAuthModalOpen(true);
+  };
+
+  const handleOpenAuthModalDirect = () => {
+    setAuthNoticeMessage(null);
+    setIsAuthModalOpen(true);
+  };
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -164,12 +178,37 @@ export default function App() {
     return () => unsubscribeStore();
   }, [user?.id, user?.isGuest]);
 
-  // Route protection: Only users with role === 'admin' can access 'admin' tab
+  // Route protection: Guard tabs for Guest users & Admin permissions
   useEffect(() => {
     if (activeTab === 'admin' && user.role !== 'admin') {
       setActiveTab('home');
+    } else if (user.isGuest && activeTab !== 'home' && activeTab !== 'profile') {
+      setActiveTab('home');
+      triggerLoginPrompt('Vui lòng đăng nhập bằng Google để bắt đầu học tập và làm trắc nghiệm.');
     }
-  }, [activeTab, user.role]);
+  }, [activeTab, user.role, user.isGuest]);
+
+  const handleTabChangeWithGuard = (targetTab: string) => {
+    if (targetTab === 'home' || targetTab === 'profile') {
+      setActiveTab(targetTab);
+      return;
+    }
+
+    if (user.isGuest) {
+      triggerLoginPrompt('Vui lòng đăng nhập bằng Google để bắt đầu học tập và làm trắc nghiệm.');
+      return;
+    }
+
+    setActiveTab(targetTab);
+  };
+
+  const handleOpenAiQuizWithGuard = () => {
+    if (user.isGuest) {
+      triggerLoginPrompt('Vui lòng đăng nhập bằng Google để bắt đầu học tập và làm trắc nghiệm.');
+      return;
+    }
+    setIsAiQuizOpen(true);
+  };
 
   const handleLogout = async () => {
     try {
@@ -199,11 +238,19 @@ export default function App() {
   };
 
   const handleSelectLesson = (lesson: Lesson) => {
+    if (user.isGuest) {
+      triggerLoginPrompt('Vui lòng đăng nhập bằng Google để bắt đầu học tập và làm trắc nghiệm.');
+      return;
+    }
     setSelectedLesson(lesson);
     setActiveTab('lesson-detail');
   };
 
   const handleStartQuiz = () => {
+    if (user.isGuest) {
+      triggerLoginPrompt('Vui lòng đăng nhập bằng Google để bắt đầu học tập và làm trắc nghiệm.');
+      return;
+    }
     setActiveTab('quiz');
   };
 
@@ -248,7 +295,7 @@ export default function App() {
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-4">
         <div className="flex flex-col items-center gap-3 text-slate-600 dark:text-slate-300">
           <Loader2 className="w-8 h-8 animate-spin text-indigo-600 dark:text-indigo-400" />
-          <p className="text-xs font-semibold">Đang tải nền tảng Engie AI & Firestore...</p>
+          <p className="text-xs font-semibold">Đang tải trải nghiệm Engie AI...</p>
         </div>
       </div>
     );
@@ -261,12 +308,12 @@ export default function App() {
       <Header
         user={user}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleTabChangeWithGuard}
         isDarkMode={isDarkMode}
         onToggleDarkMode={toggleDarkMode}
-        onOpenAuthModal={() => setIsAuthModalOpen(true)}
+        onOpenAuthModal={handleOpenAuthModalDirect}
         onOpenExportDocs={() => setIsExportDocsOpen(true)}
-        onOpenAiQuiz={() => setIsAiQuizOpen(true)}
+        onOpenAiQuiz={handleOpenAiQuizWithGuard}
         onRoleSwitch={handleRoleSwitch}
       />
 
@@ -279,9 +326,9 @@ export default function App() {
             progress={progress}
             lessons={lessons}
             onSelectLesson={handleSelectLesson}
-            onNavigateTab={setActiveTab}
-            onOpenAiQuiz={() => setIsAiQuizOpen(true)}
-            onOpenAuthModal={() => setIsAuthModalOpen(true)}
+            onNavigateTab={handleTabChangeWithGuard}
+            onOpenAiQuiz={handleOpenAiQuizWithGuard}
+            onOpenAuthModal={handleOpenAuthModalDirect}
           />
         )}
 
@@ -329,7 +376,7 @@ export default function App() {
             progress={progress}
             lessons={lessons}
             onSelectLesson={handleSelectLesson}
-            onOpenAuthModal={() => setIsAuthModalOpen(true)}
+            onOpenAuthModal={handleOpenAuthModalDirect}
             onLogout={handleLogout}
             onUpdateLevel={handleUpdateUserLevel}
           />
@@ -338,34 +385,20 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-5 sm:py-6 pb-8 sm:pb-6 text-xs text-slate-500 dark:text-slate-400 overflow-x-hidden transition-colors duration-200">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 text-center sm:text-left">
-          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-            <span className="font-bold text-indigo-700 dark:text-indigo-400 font-logo-rounded text-sm sm:text-xs">Engie AI</span>
-            <span className="text-slate-600 dark:text-slate-400 font-medium">Nền tảng học tiếng Anh thông minh với Firebase</span>
-          </div>
-          <div className="text-[11px] sm:text-xs text-slate-400 dark:text-slate-500 font-normal">
-            <span className="hidden sm:inline-flex items-center gap-3">
-              <span>Firebase Auth Google</span>
-              <span>•</span>
-              <span>Firestore Database</span>
-              <span>•</span>
-              <span>Gemini AI Tutor</span>
-            </span>
-            <span className="inline-block sm:hidden">
-              Tích hợp Firebase Firestore & Gemini AI
-            </span>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Modals */}
       <GoogleAuthModal
         isOpen={isAuthModalOpen}
-        onClose={() => setIsAuthModalOpen(false)}
+        onClose={() => {
+          setIsAuthModalOpen(false);
+          setAuthNoticeMessage(null);
+        }}
+        noticeMessage={authNoticeMessage}
         onSuccess={(newUser) => {
           setUser({ ...newUser, isGuest: false });
           localStorage.setItem('engie_logged_user', JSON.stringify(newUser));
+          setAuthNoticeMessage(null);
         }}
       />
 

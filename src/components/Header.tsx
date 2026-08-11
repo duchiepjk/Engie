@@ -1,5 +1,6 @@
 import React from 'react';
 import { User } from '../types';
+import { BrandName } from './BrandName';
 import logoImg from '../assets/images/english_hub_logo_1785896964079.jpg';
 import { 
   BookOpen, 
@@ -9,6 +10,7 @@ import {
   Award, 
   ShieldCheck, 
   UserCheck, 
+  LogIn,
   Layers, 
   Code,
   Sun,
@@ -57,14 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="flex items-center gap-1 sm:gap-1.5">
-              <span className="text-xl sm:text-2xl font-bold tracking-tight font-logo-rounded bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                Engie
-              </span>
-              <span className="text-[10px] font-bold font-logo-curved px-1.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-100/80 dark:border-indigo-800/80">
-                AI
-              </span>
-            </div>
+            <BrandName />
           </div>
 
           {/* Nav Tabs */}
@@ -174,50 +169,52 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
 
-            {/* Admin Badge / Role Switcher (Toggle in DEV, Badge in PROD) */}
-            {(import.meta.env.DEV || user.role === 'admin') && (
-              <button
-                id="header-btn-role-switch"
-                onClick={() => import.meta.env.DEV && onRoleSwitch(user.role === 'admin' ? 'user' : 'admin')}
-                className={`px-2 sm:px-2.5 py-1.5 text-xs font-medium rounded-lg border transition-all flex items-center gap-1 shrink-0 ${
-                  user.role === 'admin'
-                    ? 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800 hover:bg-purple-100 dark:hover:bg-purple-900/60'
-                    : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
-                }`}
-                title={import.meta.env.DEV ? "Đổi vai trò giữa học viên và Admin (Dev Mode)" : "Xác thực vai trò quản trị viên"}
-              >
-                <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                <span className="hidden sm:inline">{user.role === 'admin' ? 'Role: Admin' : 'Role: Học viên'}</span>
-              </button>
-            )}
-
-            {/* Google OAuth Login Button / Avatar Profile */}
+            {/* Logged-in Profile & Role Section vs Guest Login Button */}
             {!user.isGuest ? (
-              <button
-                id="header-btn-profile"
-                onClick={() => setActiveTab('profile')}
-                className="flex items-center gap-2 p-1 rounded-full border border-slate-200 dark:border-slate-700 hover:border-indigo-400 transition-all bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/50 shrink-0"
-                title={`Hồ sơ: ${user.name} (${user.email})`}
-              >
-                <img
-                  src={user.avatar}
-                  alt={user.name}
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover ring-2 ring-indigo-500/20"
-                />
-                <span className="hidden lg:inline text-xs font-semibold text-slate-700 dark:text-slate-200 pr-2">
-                  {user.name.split(' ')[0]}
-                </span>
-              </button>
+              <div className="flex items-center gap-2 shrink-0">
+                {/* Admin Badge / Role Switcher (Only visible when logged in) */}
+                {(import.meta.env.DEV || user.role === 'admin') && (
+                  <button
+                    id="header-btn-role-switch"
+                    onClick={() => import.meta.env.DEV && onRoleSwitch(user.role === 'admin' ? 'user' : 'admin')}
+                    className={`px-2 sm:px-2.5 py-1 text-[11px] font-semibold rounded-lg border transition-all flex items-center gap-1 shrink-0 ${
+                      user.role === 'admin'
+                        ? 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800 hover:bg-purple-100 dark:hover:bg-purple-900/60'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700'
+                    }`}
+                    title={import.meta.env.DEV ? "Nhấn để đổi vai trò (Dev Mode)" : "Xác thực vai trò tài khoản"}
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+                    <span className="hidden sm:inline">{user.role === 'admin' ? 'Admin' : 'Học viên'}</span>
+                  </button>
+                )}
+
+                {/* Profile Avatar Button */}
+                <button
+                  id="header-btn-profile"
+                  onClick={() => setActiveTab('profile')}
+                  className="flex items-center gap-2 p-1 rounded-full border border-slate-200 dark:border-slate-700 hover:border-indigo-400 transition-all bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/50 shrink-0 cursor-pointer"
+                  title={`Hồ sơ: ${user.name} (${user.email})`}
+                >
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover ring-2 ring-indigo-500/20"
+                  />
+                  <span className="hidden lg:inline text-xs font-semibold text-slate-700 dark:text-slate-200 pr-2">
+                    {user.name.split(' ')[0]}
+                  </span>
+                </button>
+              </div>
             ) : (
               <button
-                id="header-btn-google-login"
+                id="header-btn-login"
                 onClick={onOpenAuthModal}
-                className="px-2.5 sm:px-3.5 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-xl shadow-md transition-all flex items-center gap-1 sm:gap-1.5 active:scale-95 shrink-0"
-                title="Đăng nhập tài khoản Google"
+                className="px-3.5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-xl shadow-xs hover:shadow-md transition-all flex items-center gap-1.5 active:scale-95 shrink-0 cursor-pointer"
+                title="Đăng nhập tài khoản"
               >
-                <UserCheck className="w-4 h-4 shrink-0" />
-                <span className="hidden sm:inline">Đăng nhập Google</span>
-                <span className="inline sm:hidden">Đăng nhập</span>
+                <LogIn className="w-4 h-4 shrink-0" />
+                <span>Đăng nhập</span>
               </button>
             )}
           </div>
